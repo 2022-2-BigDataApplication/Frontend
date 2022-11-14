@@ -11,4 +11,7 @@
         echo "Could not connect : ".mysqli_connect_error();
         exit();
     }
+
+    // 마지막에 커넥션 닫아주세요
+    mysqli_close($conn);
 ?>
