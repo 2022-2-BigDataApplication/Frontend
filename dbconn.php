@@ -12,6 +12,7 @@
         exit();
     }
 
-    // 마지막에 커넥션 닫아주세요
+    // 마지막에 커넥션 닫아주세요, 에코 부분은 주석처리
     mysqli_close($conn);
+    echo "Connection closed";
 ?>
