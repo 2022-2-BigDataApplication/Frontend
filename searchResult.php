@@ -53,7 +53,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql1)
+                 $result= mysqli_query($db, $sql1);
             
                  while($row = mysqli_fetch_array($result)) {
                 
