@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +6,8 @@ session_start();
 <header>
     <h1>New Jelly</h1>
     <nav>
-      <span><a href="login.html">Login</a></span>
-      <span><a href="join.html">Join</a></span>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
     </nav>
 </header>
   <body>
@@ -18,12 +15,11 @@ session_start();
     <h2> Welcome! </h2>
     <div class="div-parent" style="margin-top: 30px">
     <div class="div-child">
-      <form action="login.php" method = "post">
+      <form action="login.php" method = "POST">
       <table>
         <tr>
           <td>ID</td>
           <td><input type="text" name="ID" placeholder="typing your own ID"></td>
-          <td><input type="button" name="ID check" value="overlapped?"></td>
         </tr>
 
         <tr><td></td><td></td><td></td></tr>
