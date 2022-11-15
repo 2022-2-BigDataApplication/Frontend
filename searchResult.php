@@ -23,7 +23,7 @@
 <body>
     <br><br><br>
     <center>
-    <form action="research.php" method="GET">
+    <form action="searchResearch.php" method="GET">
         
         <h1>Movie Recommender</h1>
     
