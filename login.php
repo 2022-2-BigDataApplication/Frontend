@@ -69,3 +69,4 @@ else{
     }
 }
 ?>
+<?php mysqli_close($con); ?>

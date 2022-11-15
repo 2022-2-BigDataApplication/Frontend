@@ -28,7 +28,6 @@ nav a:hover{
 h1{
   font-size: 20px;
   margin: 0;
-  margin-right: 30px;
 }
 
 h2{
@@ -141,23 +140,6 @@ img {
 }
 
 .comment-recent{
-  align-items: center;
-  clear: both;
-  border: 1px solid yellow;
-}
-
-.comment-header{
-  height: 40px;
-  width: 100%;
-  padding: 1rem;
-  color: white;
-  background: rgb(0, 116, 21);
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-}
-
-.recent {
   align-items: center;
   clear: both;
   border: 1px solid yellow;

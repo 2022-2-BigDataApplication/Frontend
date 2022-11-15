@@ -75,3 +75,22 @@ table {
   display: table-cell;
   text-align: center;
 }
+
+
+button{
+  padding: 15px 45px;
+  font-size: 30px;
+  color: white;
+  background-color: rgb(0, 119, 0);
+  display: inline-block;
+  border: solid 2px grey;
+  border-radius: 12px;
+}
+
+.button:hover{
+  background-color: rgb(238, 255, 0);
+}
+
+.genre {
+  background-color: antiquewhite;
+}
