@@ -1,6 +1,6 @@
 <?php
-    $conn=mysqli_connect( "localhost", "team07", "team07", "team07");
-    if(!$conn){
+    $connect = mysqli_connect( "localhost", "team07", "team07", "team07");
+    if(!$connect){
         echo "Database Connection Error";
     }
     else{
