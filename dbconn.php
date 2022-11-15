@@ -1,5 +1,5 @@
 <?php
-    $conn=mysql_connect( "localhost", "team07", "team07", "team07");
+    $conn=mysqli_connect( "localhost", "team07", "team07", "team07");
     if(!$conn){
         echo "Database Connection Error";
     }
