@@ -1,10 +1,10 @@
 <?php
 session_start();
-unset($_SESSION['userid']);
+unset($_SESSION['userId']);
 
 echo("
 <script>
-location.href='MAIN.php';
+location.href='p_MAIN.php';
 </script>
 ");
 ?>
