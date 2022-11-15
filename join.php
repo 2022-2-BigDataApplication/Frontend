@@ -18,12 +18,12 @@
       $encrypted_password = password_hash( $password, PASSWORD_DEFAULT);
       $jb_sql_add_user = "INSERT INTO user ( id, password ) VALUES ( '$username', '$encrypted_password' );";
       mysqli_query( $jb_conn, $jb_sql_add_user );
-      header( 'Location: SIGNUP_OK.php' );
+      header( 'Location: join_ok.php' );
     }
   }
 ?>
 <!doctype html>
-<html lang="ko">
+<html>
   <head>
     <meta charset="utf-8">
     <title>JOIN US!</title>
