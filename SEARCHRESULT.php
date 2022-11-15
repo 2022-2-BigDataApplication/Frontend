@@ -47,13 +47,13 @@
         <!--제목포함-->
         <div class="search_title">
             <p>* 제목 포함</p>
-            <form action="research.php" method="get">
+            <form action="searchResult.php" method="get">
                 <?php 
                     $sql1 = "SELECT posterPath FROM movie_metadata WHERE movieNm LIKE '%$search_key%'";
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql1)
+                 $result= mysqli_query($db, $sql1);
             
                  while($row = mysqli_fetch_array($result)) {
                 
@@ -70,7 +70,7 @@
         <!--배우포함-->
         <div class="search_name">
             <p>* 배우 포함</p>
-            <form action="research.php" method="get">
+            <form action="searchResult.php" method="get">
                 <?php 
                     $sql2 = "SELECT posterPath from movie_metadata
 
@@ -79,7 +79,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql2)
+                 $result= mysqli_query($db, $sql2);
             
                  while($row = mysqli_fetch_array($result)) {
                 
@@ -94,7 +94,7 @@
         
         <div class="search_name">
             <p>* 감독 포함</p>
-            <form action="research.php" method="get">
+            <form action="searchResult.php" method="get">
                 <?php 
                     $sql3 = "SELECT posterPath from movie_metadata
 
@@ -103,7 +103,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql3)
+                 $result= mysqli_query($db, $sql3);
             
                  while($row = mysqli_fetch_array($result)) {
                 
@@ -119,7 +119,7 @@
         <!--키워드포함-->
         <div class="search_keyword">
             <p>* 키워드 포함</p>
-            <form action="research.php" method="get">
+            <form action="searchResult.php" method="get">
                 <?php 
                     $sql4 = "SELECT posterPath from movie_metadata
 
@@ -130,7 +130,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql4)
+                 $result= mysqli_query($db, $sql4);
             
                  while($row = mysqli_fetch_array($result)) {
                 
