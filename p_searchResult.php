@@ -149,7 +149,13 @@ include('dbconn.php');
               <?php
               }
           ?> </div>
-              <?php mysqli_close($connect);?>
+            <?php
+                mysqli_free_result($result_title);
+                mysqli_free_result($result_actor);
+                mysqli_free_result($result_director);
+                mysqli_free_result($result_key);
+                mysqli_close($connect);
+            ?>
     </div>
 </body>
 
