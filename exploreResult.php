@@ -238,7 +238,7 @@
                 
                 ?> 
 
-                <article><img src=<?=$poster?>></article>
+                <article><img src=<?$poster?>></article>
 
                 <?php
             }
