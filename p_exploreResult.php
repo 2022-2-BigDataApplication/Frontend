@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('dbconn.php');
@@ -7,6 +8,7 @@ include('dbconn.php');
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="headerCSS.css">
+
     <style>
         * {margin: 0; padding: 0;}
         #wrap {
@@ -174,7 +176,7 @@ include('dbconn.php');
                         and (genreId in $genre)
                     
                         GROUP BY m.movieId
-                        
+
                         order by review_num desc;";
                     } 
                     /*리뷰순*/
@@ -187,8 +189,9 @@ include('dbconn.php');
                         and (genreId in $genre)
                         
                         GROUP BY m.movieId
-                        
+
                         order by rating_avg desc;";
+
                     }
                 } 
                 /*키즈*/
@@ -207,11 +210,13 @@ include('dbconn.php');
                         inner join movie_metadata as m on r.movieId = m.movieId
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
+
                         
                         and (genreId in $genre)
                         and adult=0
                         GROUP BY m.movieId
                         
+
                         order by review_num desc;";
                     } 
                     /*리뷰순*/
@@ -220,12 +225,14 @@ include('dbconn.php');
                         inner join movie_metadata as m on r.movieId = m.movieId
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
+
                         
                         and (genreId in $genre)
                         and adult=0
                         GROUP BY m.movieId
                         
                         order by rating_avg desc;";
+
                     } 
                 }
             }
@@ -248,3 +255,4 @@ include('dbconn.php');
     <?php mysqli_close($connect);?>
 </body>
 </html>
+
