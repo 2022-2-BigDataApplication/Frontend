@@ -23,7 +23,7 @@
 <body>
     <div id="filter">
 
-        <form action="explore.php" method="get">
+        <form action="exploreResult.php" method="get">
             <p>Option Selection</p>
             
             RelesedDate:<input type="number" name="start_year" placeholder="start_year">
@@ -238,7 +238,7 @@
                 
                 ?> 
 
-                <article><img src=<?$poster?>></article>
+                <article><img src=<?=$poster?>></article>
 
                 <?php
             }
