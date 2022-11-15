@@ -1,6 +1,5 @@
 <?php
-session_start();
-include('log_check.php');
+    include 'log_check.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,27 +11,27 @@ include('log_check.php');
 <header>
     <h1>New Jelly</h1>
     <?php
-        if(isset($_SESSION['userId'])) {
+        if($jb_login) {
     ?>
     <nav>
       <span><a href="logout.php">Logout</a></span>
-      <span><a href="Mypage.php">Mypage</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
     </nav>
     <?php
         } else {
     ?>
     <nav>
-      <span><a href="login.php">Login</a></span>
-      <span><a href="join.php">Join</a></span>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
     </nav>
     <?php } ?>    
 </header>
 
 <body>
-    <div style=" text-align: center; padding-top: 100px;">
+    <div style="text-align: center; padding-top: 100px;">
         <p style="font-size: 40px; text-align: center; font-weight: bold;">Movie Recommender</p>
-        <button type="button" onClick="location.href='SEARCHRESULT.html'">SEARCH</button>
-        <button type="button" onClick="location.href='EXPLORE.html'">EXPLORE</button>   
+        <button type="button" onClick="location.href='p_searchResult.php'">SEARCH</button>
+        <button type="button" onClick="location.href='p_exploreResult.php'">EXPLORE</button>   
     </div>
 
     <div class="genre">
