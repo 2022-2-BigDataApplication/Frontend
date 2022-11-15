@@ -64,8 +64,8 @@
 <body>
     <div style="text-align: center; padding-top: 100px; margin-bottom: 100px;">
         <p style="font-size: 40px; text-align: center; font-weight: bold;">Movie Recommender</p>
-        <button type="button" onClick="location.href='p_searchResult.php'">SEARCH</button>
-        <button type="button" onClick="location.href='p_exploreResult.php'">EXPLORE</button>   
+        <button type="button" onClick="location.href='p_searchIndex.php'">SEARCH</button>
+        <button type="button" onClick="location.href='p_exploreIndex.php'">EXPLORE</button>   
     </div>
 
     <div class = "genre">
