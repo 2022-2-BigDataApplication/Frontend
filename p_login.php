@@ -37,7 +37,7 @@ session_start();
         </table>
         <br>
 
-        <p><center><input type="submit" name="submit" size="50" value="Done" style="height:30px; width:50px"/></center></p>
+        <p><input type="submit" name="submit" size="50" value="Done" style="height:30px; width:50px; margin: auto; display: block;"/></p>
       </form>
     </div>       
     </div>

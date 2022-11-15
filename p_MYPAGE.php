@@ -54,22 +54,27 @@
           <table>
             <thead>
               <tr>
-                <th>Movie</th><th>Date</th><th>Score</th><th>Comments</th><th>Edit</th><th>Delete</th>
+                <th>Movie</th>
+                <th>Date</th>
+                <th>Score</th>
+                <th>Comments</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-            <?php
-              while ($array_row = mysqli_fetch_row($array_resource)){
-                echo
-                  '<p>'
-                    . $array_row[0]
-                    . $array_row[2]
-                    . $array_row[3]
-                    . $array_row[4]
-                    . '</p>'
-                ;
-              }
-            ?>
+              <?php
+                while ($array_row = mysqli_fetch_row($array_resource)){
+                  echo
+                    '<table>'
+                      . $array_row[0]
+                      . $array_row[2]
+                      . $array_row[3]
+                      . $array_row[4]
+                      . '</p>'
+                  ;
+                }
+              ?>
             </tbody>
           </table>
         </div>

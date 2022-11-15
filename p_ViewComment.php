@@ -81,8 +81,34 @@ include('dbconn.php');
       ?>
     </div>
 
+    <?php
+      $comments_sql = "SELECT * from review where movieId = $movieId"
+      $comments_resource = mysqli_query($comments_sql);
+    ?>
+
     <div class="comment-recent"><!--movie comments all recent-->
-      comment all
+      <div class="array">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th><th>Score</th><th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
+              while ($comments_row = mysqli_fetch_row($comments_resource)){
+                echo
+                  '<p>'
+                    . $array_row[4]
+                    . $array_row[3]
+                    . $array_row[2]
+                    . '</p>'
+                ;
+              }
+            ?>
+            </tbody>
+          </table>
+        </div>
     </div>
 
   </main>

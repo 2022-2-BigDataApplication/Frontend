@@ -92,7 +92,7 @@ include('log_check.php');
         </div>
       <div class="recent"> <!--recent comment-->
         <?php
-        $recent_sql = "SELECT reviewTime, comments from review where movieId = 17 order by reviewTime desc LIMIT 3;";
+        $recent_sql = "SELECT reviewTime, comments from review where movieId = $movieId order by reviewTime desc LIMIT 3;";
 
         ?>
       </div>

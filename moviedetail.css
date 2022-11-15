@@ -144,3 +144,17 @@ img {
   clear: both;
   border: 1px solid yellow;
 }
+
+.array {
+  border: 3px solid darkgreen;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+}

@@ -25,7 +25,7 @@
             $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
             $user_add_sql = "INSERT into users (userId, pwd, userName, introduction) VALUES ($userId, $password, $userName, $userIntro)";
             mysqli_query($connect, $user_add_sql);
-            header('Location: login.php');
+            header('Location: p_login.php');
         }
     }
 ?>
@@ -38,8 +38,8 @@
 <header>
     <h1>New Jelly</h1>
     <nav>
-      <span><a href="login.php">Login</a></span>
-      <span><a href="join.php">Join</a></span>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
     </nav>
 </header>
   <body>
@@ -47,9 +47,9 @@
     <h2> Join us! </h2>
     <div>
       <table>
-      <form action="join.php" method = "post">
+      <form action="p_join.php" method = "post">
         <tr>
-          <td>E-mail</td>
+          <td>ID</td>
           <td><input type="text" name="ID" placeholder="Email Address"></td>
         </tr>
 
@@ -85,7 +85,7 @@
       </table>
         <br>
 
-        <p><center><input type="submit" name="submit" size="50" value="Done" style="height:30px; width:50px"/></center></p>
+        <p><input type="submit" name="submit" size="50" value="Done" style="height:30px; width:50px; margin: auto; display: block;"/></p>
         <?php
             if ($wu == 1){
                 echo "<p> Duplicate ID </p>";
