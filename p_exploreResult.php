@@ -39,11 +39,11 @@ include('dbconn.php');
             <h2>Filtering Option</h2>
             <br>
             
-            RelesedDate:<input type="text" name="start_year" placeholder="start_year">
-                        <input type="text" name="end_year" placeholder="end_year">
+            RelesedDate:<input type="text" name="start_year" placeholder="start_year" value='1920'>
+                        <input type="text" name="end_year" placeholder="end_year" value='2022'>
                         <br><br>
                             
-            Genre : <input type="checkbox" name="genre[]" value="21">All
+            Genre : <input type="checkbox" name="genre[]" value="21" checked>All
                     <input type="checkbox" name="genre[]" value="16">Animation
                     <input type="checkbox" name="genre[]" value="12">Adventure
                     <input type="checkbox" name="genre[]" value="10749">Romance
@@ -66,12 +66,12 @@ include('dbconn.php');
                     <input type="checkbox" name="genre[]" value="10769">Foreign
                     <br><br>
 
-            Age Limitation:<input type="radio" name="age" value="all">All
+            Age Limitation:<input type="radio" name="age" value="all" checked>All
                             <input type="radio" name="age" value="kids">Kids
                     <br><br>
 
             Viewing : <select name="view">
-                <option value="0">Recently Released</option>
+                <option value="0" default>Recently Released</option>
                 <option value="1">Highly Scored</option>
                 <option value="2">Most Commented</option>
             </select>   
@@ -230,20 +230,21 @@ include('dbconn.php');
                 }
             }
             
-            $res = mysqli_query($conn, $sql);
+            $res = mysqli_query($connect, $sql);
 
             while($row = mysqli_fetch_row($res)) {
                 
                 $poster = "http://image.tmdb.org/t/p/w185/$row[1]";
+                $_Session['pathKey'] = $row[1];
                 
                 ?> 
 
-                <article><img src=<?=$poster?>></article>
+                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
 
                 <?php
             };
        ?>
     </div>
-    
+    <?php mysqli_close($connect);?>
 </body>
 </html>
