@@ -1,16 +1,17 @@
 <?php
   session_start();
   include('dbconn.php');
-  $user_sql = "SELECT * FROM users WHERE userID = $userId"
-  $review_sql = "SELECT * FROM review WHERE userId=$userId";
-  $reviewcount_sql = "SELECT count(*) FROM review WHERE userId =$userId";
+  $userId = $_SESSION['userId'];
+  $user_sql = "SELECT * FROM users WHERE userId = '$userId'";
+  $review_sql = "SELECT * FROM review WHERE userId='$userId'";
+  $reviewcount_sql = "SELECT count(*) FROM review WHERE userId ='$userId'";
 
-  $user_resource = mysqli_query($user_sql);
+  $user_resource = mysqli_query($connect, $user_sql);
   $user_row = mysqli_fetch_row($user_resource);
   $user_name = $user_row[2];
   $user_intro = $user_row[3];
 
-  $review_num_resource = mysqli_query($reviewcount_sql);
+  $review_num_resource = mysqli_query($connect, $reviewcount_sql);
   $review_num = mysqli_fetch_row($review_num_resource);
 ?>
 
@@ -40,12 +41,12 @@
     </div>
 
     <div class="count">
-        The number <?php echo $user_name ?> reviewed: <?php echo $review_num ?>
+        The number <?php echo $user_name ?> reviewed: <?php echo $review_num[0] ?>
     </div>
 
     <?php
-      $array_sql = "SELECT * from review where userId = $userId"
-      $array_resource = mysqli_query($array_sql);
+      $array_sql = "SELECT * from review where userId = '$userId'";
+      $array_resource = mysqli_query($connect, $array_sql);
     ?>
     
     <div class="reviews">
@@ -80,5 +81,8 @@
         </div>
     </div>
 </body>
-<?php mysqli_close($con); ?>
+<?php 
+mysqli_free_result($user_resource);
+mysqli_free_result($review_num_resource);
+mysqli_close($connect); ?>
 </html>
