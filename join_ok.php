@@ -9,6 +9,7 @@
 
   </head>
   <body>
+    // html center는 html4 까지만이고 5부턴 css로 적용해야한다고 합니다 수정해주세요
     <center><h1>Success!</h1></center>
 
     <form>
