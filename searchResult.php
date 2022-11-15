@@ -79,7 +79,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql2)
+                 $result= mysqli_query($db, $sql2);
             
                  while($row = mysqli_fetch_array($result)) {
                 
@@ -103,7 +103,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql3)
+                 $result= mysqli_query($db, $sql3);
             
                  while($row = mysqli_fetch_array($result)) {
                 
@@ -130,7 +130,7 @@
                 ?>
             </form>
             <?php
-                 $result= mysqli_query($db, $sql4)
+                 $result= mysqli_query($db, $sql4);
             
                  while($row = mysqli_fetch_array($result)) {
                 
