@@ -29,7 +29,7 @@ if (!$pass)
 
 include ("dbconn.php");
 
-$sql = "select * from userId where id='$id'";
+$sql = "SELECT * from users where id='$id'";
 $result = mysql_query($sql, $connect);
 $num_match = mysql_num_rows($result);
 
@@ -58,12 +58,8 @@ else{
     else
     {
         $userid=$row[userId];
-        $username=$row[userName];
-        $userIntro=$row[introduction];
 
         $_SESSION['userid']=$userid;
-        $_SESSION['username']=$username;
-        $_SESSION['userIntro']=$userIntro;
 
         echo("
         <script>
