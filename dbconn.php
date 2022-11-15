@@ -1,18 +1,6 @@
-<?php
-    $conn=mysqli_connect( "localhost", "team07", "team07", "team07");
-    if(!$conn){
-        echo "Database Connection Error";
-    }
-    else{
-        // 커넥션 체크용 나중에 주석처리
-        echo "Database Connection Success";
-    }
-    if(mysqli_connect_errno()){
-        echo "Could not connect : ".mysqli_connect_error();
-        exit();
-    }
+<?
+    $connect=mysql_connect( "localhost", "root", "apmsetup", "DBname") or  
+        die( "Can't connect to DB server"); 
 
-    // 마지막에 커넥션 닫아주세요, 에코 부분은 주석처리
-    mysqli_close($conn);
-    echo "Connection closed";
+    mysql_select_db("DBname",$connect);
 ?>
