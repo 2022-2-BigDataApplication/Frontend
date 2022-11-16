@@ -115,15 +115,16 @@ include('dbconn.php');
             <tbody>
               <?php
                 $movie = $_SESSION['movieId'];
-                $recent_sql = "SELECT reviewTime, rating, comments from review where movieId = $movie ORDER BY reviewTime desc LIMIT 3;";
+                $recent_sql = "SELECT reviewTime, rating, comments from review where movieId = '$movie' ORDER BY reviewTime desc LIMIT 3;";
                 $recent_resource = mysqli_query($connect, $recent_sql);
                 $recent_row = mysqli_fetch_row($recent_resource);
                 while ($recent_row = mysqli_fetch_row($recent_resource)){
-                  echo 
-                    '<tr><td>'
-                    . $recent_row[0] . '</td><td>'
-                    . $recent_row[1] . '</td><td>'
-                    . $recent_row[2] . '</td></tr>';
+                  ?>
+                  <tr>
+                  <td><?php echo $recent_row[0]?></td>
+                  <td><?php echo $recent_row[1]?></td>
+                  <td><?php echo $recent_row[2]?></td>
+                  </tr> <?php
                 }
               ?>
             </tbody>
