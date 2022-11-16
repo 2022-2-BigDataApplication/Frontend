@@ -133,7 +133,7 @@ $view= $_POST['view'];
                         WHERE DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         ORDER BY openDt desc;";
                     } 
-                    /*별점순*/
+                    /*리뷰순*/
                     else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num` FROM review as r
                         INNER JOIN movie_metadata as m on r.movieId = m.movieId
@@ -141,7 +141,7 @@ $view= $_POST['view'];
                         GROUP BY m.movieId
                         order by review_num desc;";
                     } 
-                    /*리뷰순*/
+                    /*별점순*/
                     else {
                         $sql = "SELECT m.originalTitle, m.posterPath, avg(r.rating) AS `rating_avg` FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -160,7 +160,7 @@ $view= $_POST['view'];
                         and adult=0
                         order by openDt desc;";
                     } 
-                    /*별점순*/
+                    /*리뷰순*/
                     else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -171,7 +171,7 @@ $view= $_POST['view'];
                         
                         order by review_num desc;";
                     } 
-                    /*리뷰순*/
+                    /*별점순*/
                     else {
                         $sql = "SELECT m.originalTitle, m.posterPath, avg(r.rating) AS `rating_avg` FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -186,16 +186,20 @@ $view= $_POST['view'];
             } 
             /* 장르선택 */
             else {
+
+                for ($i=0;$i<count($genre);$i++){
+                    echo "<p align = \"center\">movieId = $genre[$i]</p>";
+                
                 /*성인*/
                 if($age=='all') {
                     /*최신순*/
                     if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
-                        and (genreId in ($genre))
+                        and (genreId = $genre[$i])
                         order by openDt desc;";
                     } 
-                    /*별점순*/
+                    /*리뷰순*/
                     else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -208,7 +212,7 @@ $view= $_POST['view'];
                         
                         order by review_num desc;";
                     } 
-                    /*리뷰순*/
+                    /*별점순*/
                     else {
                         $sql = "SELECT m.originalTitle, m.posterPath, avg(r.rating) AS `rating_avg` FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -232,7 +236,7 @@ $view= $_POST['view'];
                         and adult=0
                         order by openDt desc;";
                     } 
-                    /*별점순*/
+                    /*리뷰순*/
                     else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -245,7 +249,7 @@ $view= $_POST['view'];
                         
                         order by review_num desc;";
                     } 
-                    /*리뷰순*/
+                    /*별점순*/
                     else {
                         $sql = "SELECT m.originalTitle, m.posterPath, avg(r.rating) AS `rating_avg` FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
@@ -259,6 +263,8 @@ $view= $_POST['view'];
                         order by rating_avg desc;";
                     } 
                 }
+
+            }
             }
         
             $res = mysqli_query($connect, $sql);
