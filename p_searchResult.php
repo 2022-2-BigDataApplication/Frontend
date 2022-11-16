@@ -1,40 +1,35 @@
 <?php
-session_start();
 include('dbconn.php');
+include 'log_check.php';
 ?>
 
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="search.css">
-        <style>
-            * {margin: 0; padding: 0;}
-            #wrap {
-                width=650px;
-                margin: 0 auto;
-                overflow: hidden;
-                padding-top: 10px;
-            }
 
-            div > article {
-                float: left;
-                margin-left: 10px;
-                margin-bottom: 10px;
-            }
-
-            img {display: block;}
-        </style>
 </head>
 
 <body>
     <!--상단바-->
-    <header>
-            <h1>New Jelly</h1>
-            <nav>
-            <span><a href="logout.php">Logout</a></span>
-            <span><a href="mypage.html">Mypage</a></span>
-            </nav>
-    </header>
+<header>
+    <h1>New Jelly</h1>
+    <?php
+        if($jb_login) {
+    ?>
+    <nav>
+      <span><a href="logout.php">Logout</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
+    </nav>
+    <?php
+        } else {
+    ?>
+    <nav>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
+    </nav>
+    <?php } ?>    
+</header>
 
     <br><br>
     <!--검색창-->
@@ -54,8 +49,7 @@ include('dbconn.php');
         <h3>Search Result</h3>
         
         <?php $search_key = $_POST['search_key']; ?>
-        
-        
+
         <!--제목포함-->
         <div class="A">
             <p>Title</p>
@@ -64,13 +58,19 @@ include('dbconn.php');
                
                     $result_title= mysqli_query($connect, $sql1);
                     $count1 = 0;
-                     while($row2 = mysqli_fetch_row($result_title) and $count1<10) {
+                     while($row2 = mysqli_fetch_row($result_title) and $count1 <10) {
                     
-                            $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
-                            $_Session['pathKey'] = $row2[0];
+                            $poster = $row2[0];
+                            if(isset($_SESSION['pathKey'])){
+                                unset($_SESSION['pathKey']);
+                                $_SESSION['pathKey'] = $poster;
+                            } else {
+                                $_SESSION['pathKey'] = $poster;
+                            }
+                            
                         
                     ?>
-                    <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                    <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
                     <?php
                     $count1++;
                     }
@@ -88,11 +88,16 @@ include('dbconn.php');
                  $count2 = 0;
                  while($row2 = mysqli_fetch_row($result_actor) and $count2<10) {
                 
-                        $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
-                        $_Session['pathKey'] = $row2[0];
+                        $poster = $row2[0];
+                        if(isset($_SESSION['pathKey'])){
+                            unset($_SESSION['pathKey']);
+                            $_SESSION['pathKey'] = $poster;
+                        } else {
+                            $_SESSION['pathKey'] = $poster;
+                        }
                 
                 ?>
-                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
                 <?php
                 $count2++;
                 }
@@ -113,11 +118,16 @@ include('dbconn.php');
                  $count3 = 0;
                  while($row3 = mysqli_fetch_row($result_director) and $count3<10) {
                 
-                        $poster = "http://image.tmdb.org/t/p/w185/$row3[0]";
-                        $_Session['pathKey'] = $row3[0];
+                        $poster = $row3[0];
+                        if(isset($_SESSION['pathKey'])){
+                            unset($_SESSION['pathKey']);
+                            $_SESSION['pathKey'] = $poster;
+                        } else {
+                            $_SESSION['pathKey'] = $poster;
+                        }
                     
                 ?>
-                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
                 <?php
                 $count3++;
                 }
@@ -138,12 +148,16 @@ include('dbconn.php');
                $count4 = 0;
 
                while($row4 = mysqli_fetch_row($result_key) and $count4<10) {
-              
-                      $poster = "http://image.tmdb.org/t/p/w185/$row4[0]";
-                      $_Session['pathKey'] = $row4[0];
+                      $poster = $row4[0];
+                      if(isset($_SESSION['pathKey'])){
+                        unset($_SESSION['pathKey']);
+                        $_SESSION['pathKey'] = $poster;
+                    } else {
+                        $_SESSION['pathKey'] = $poster;
+                    }
               
               ?>
-                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
               <?php
               $count4++;
               }?> 
