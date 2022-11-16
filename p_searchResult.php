@@ -63,34 +63,37 @@ include('dbconn.php');
         
         
         <!--제목포함-->
-        <div>
+        <span>
             <p>Title</p>
                 <?php 
                     $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%';";
                
-                 $result_title= mysqli_query($connect, $sql1);
-            
-                 while($row1 = mysqli_fetch_row($result_title)) {
-                        $poster = "http://image.tmdb.org/t/p/w185/$row1[0]";
-                        $_Session['pathKey'] = $row1[0];
+                    $result_title= mysqli_query($connect, $sql1);
+                    $count1 = 0;
+                     while($row2 = mysqli_fetch_row($result_title) and $count1<10) {
+                    
+                            $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
+                            $_Session['pathKey'] = $row2[0];
+                        
+                    ?>
+                    <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                    <?php
+                    $count1++;
+                    }
                 ?>
-                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
-                <?php
-                }
-            ?>
-        </div>
+        </span>
         <br><br>
-        <!--배우포함-->
-            
-        <div>
+        
+        <!--배우일치-->    
+        <span>
             <p>Actor</p>
             <?php 
                 $sql2 = "SELECT posterPath from movie_metadata
                     where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key'));";
                
                  $result_actor= mysqli_query($connect, $sql2);
-            
-                 while($row2 = mysqli_fetch_row($result_actor)) {
+                 $count2 = 0;
+                 while($row2 = mysqli_fetch_row($result_actor) and $count2<10) {
                 
                         $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
                         $_Session['pathKey'] = $row2[0];
@@ -98,13 +101,14 @@ include('dbconn.php');
                 ?>
                 <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
                 <?php
+                $count2++;
                 }
             ?>
-        </div>
+        </span>
             <br><br>
 
-            <p>Director</p>
-            <div>
+            <span>
+                <p>Director</p>
                 <?php 
                     $sql3 = "SELECT posterPath from movie_metadata
                     where directorId in (select directorId from director where directorName LIKE '$search_key');";
@@ -113,22 +117,23 @@ include('dbconn.php');
             
             <?php
                  $result_director= mysqli_query($connect, $sql3);
-            
-                 while($row3 = mysqli_fetch_row($result_director)) {
+                 $count3 = 0;
+                 while($row3 = mysqli_fetch_row($result_director) and $count3<10) {
                 
                         $poster = "http://image.tmdb.org/t/p/w185/$row3[0]";
                         $_Session['pathKey'] = $row3[0];
-                
+                    
                 ?>
                 <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
                 <?php
+                $count3++;
                 }
             ?>
-            </div>
+            </span>
         
         <!--키워드포함-->
             <br><br>    
-            <div>
+            <span>
             <p>Keyword</p>
                 <?php 
                     $sql4 = "SELECT posterPath from movie_metadata
@@ -138,8 +143,9 @@ include('dbconn.php');
                 ?>
             <?php
                $result_key= mysqli_query($connect, $sql4);
-            
-               while($row4 = mysqli_fetch_row($result_key)) {
+               $count4 = 0;
+
+               while($row4 = mysqli_fetch_row($result_key) and $count4<10) {
               
                       $poster = "http://image.tmdb.org/t/p/w185/$row4[0]";
                       $_Session['pathKey'] = $row4[0];
@@ -147,8 +153,9 @@ include('dbconn.php');
               ?>
                 <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
               <?php
+              $count4++;
               }
-          ?> </div>
+          ?> </span>
             <?php
                 mysqli_free_result($result_title);
                 mysqli_free_result($result_actor);
