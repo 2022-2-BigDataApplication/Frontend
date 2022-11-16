@@ -35,6 +35,11 @@ h2{
   text-align: center;
 }
 
+h3{
+  font-size: 30px;
+  text-align: left;
+}
+
 main {
   padding: 1rem;
   height: 100%;  
@@ -69,8 +74,6 @@ div {
   clear: both;
   margin-top: 20px;
   height: 230px;
-
-  border: 1px solid purple;
 }
 
 .poster-image-div{
@@ -80,8 +83,6 @@ div {
   float: left;
   width: 40%;
   height: 400px;
-
-  border: 1px solid red;
 }
 
 .movie-info3{
@@ -91,8 +92,6 @@ div {
   float: right;
   width: 60%;
   height: 400px;
-
-  border: 1px solid blue;
 }
 
 img {
@@ -142,12 +141,26 @@ img {
 .comment-recent{
   align-items: center;
   clear: both;
-  border: 1px solid yellow;
+}
+
+.comment-header{
+  height: 40px;
+  padding: 1rem;
+  color: white;
+  background: rgb(0, 116, 21);
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .array {
+  margin-top: 20px;
+  clear: both;
   border: 3px solid darkgreen;
   border-radius: 10px;
+  height: 100ch;
+  overflow: hidden;
 }
 
 table {
@@ -155,6 +168,11 @@ table {
 }
 
 th, td {
-  padding: 10px;
+  padding-top: 20px;
+  text-align: left;
   border-bottom: 1px solid #dadada;
+}
+
+tr {
+  padding-left: 20px;
 }
