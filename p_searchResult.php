@@ -66,7 +66,7 @@ include('dbconn.php');
         <div>
             <p align = "center">Title</p>
                 <table><tr><?php 
-                    $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%';";
+                    $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%' AND length(posterPath) > 0;";
                
                     $result_title= mysqli_query($connect, $sql1);
                     $count1 = 0;
@@ -89,7 +89,7 @@ include('dbconn.php');
             <p align = "center">Actor</p>
             <table><tr><?php 
                 $sql2 = "SELECT posterPath from movie_metadata
-                    where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key'));";
+                    where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key')) AND length(posterPath) > 0;";
                
                  $result_actor= mysqli_query($connect, $sql2);
                  $count2 = 0;
@@ -111,7 +111,7 @@ include('dbconn.php');
                 <p align = "center">Director</p>
                 <table><tr><?php 
                     $sql3 = "SELECT posterPath from movie_metadata
-                    where directorId in (select directorId from director where directorName LIKE '$search_key');";
+                    where directorId in (select directorId from director where directorName LIKE '$search_key') AND length(posterPath) > 0;";
                     
                 ?>
             
@@ -138,7 +138,7 @@ include('dbconn.php');
             <table><tr><?php 
                     $sql4 = "SELECT posterPath from movie_metadata
                     where movieId in (select movieId from describes
-                    where keywordId = any(select keywordId from keyword where keywordName LIKE '%$search_key%'));";
+                    where keywordId = any(select keywordId from keyword where keywordName LIKE '%$search_key%')) AND length(posterPath) > 0;";
                     
                 ?>
             <?php
