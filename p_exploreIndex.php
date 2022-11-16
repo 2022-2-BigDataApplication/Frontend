@@ -6,7 +6,24 @@ include('dbconn.php');
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="headerCSS.css">
+    <style>
+        * {margin: 0; padding: 0;}
+        #wrap {
+            width=650px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding-top: 10px;
+        }
+
+        div > article {
+            float: left;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        img {display: block;}
+    </style>
 </head>
 
 <body>
@@ -17,16 +34,16 @@ include('dbconn.php');
         <span><a href="mypage.html">Mypage</a></span>
         </nav>
     </header>
-    <div class ="filter">
+    <div id="filter">
         <form action="p_exploreResult.php" method="post">
             <h2>Filtering Option</h2>
             <br>
-        <div class="filtering">
-            RelesedDate:<input type="text" name="start_year" placeholder="start_year" value='1920'>
-                        <input type="text" name="end_year" placeholder="end_year" value='2022'>
+            
+            RelesedDate:<input type="text" name="start_year" placeholder="start_year">
+                        <input type="text" name="end_year" placeholder="end_year">
                         <br><br>
                             
-            Genre : <input type="checkbox" name="genre[]" value="21" checked>All
+            Genre : <input type="checkbox" name="genre[]" value="21">All
                     <input type="checkbox" name="genre[]" value="16">Animation
                     <input type="checkbox" name="genre[]" value="12">Adventure
                     <input type="checkbox" name="genre[]" value="10749">Romance
@@ -49,20 +66,18 @@ include('dbconn.php');
                     <input type="checkbox" name="genre[]" value="10769">Foreign
                     <br><br>
 
-            Age Limitation:<input type="radio" name="age" value="all" checked>All
+            Age Limitation:<input type="radio" name="age" value="all">All
                             <input type="radio" name="age" value="kids">Kids
                     <br><br>
 
             Viewing : <select name="view">
-
                 <option value="0">Recently Released</option>
                 <option value="1">Most Commented</option>
                 <option value="2">Highly Scored</option>
             </select>   
                     <br><br><br>
-
             <button>SUBMIT</button>
-        </div> 
+            
         </form>
     </div>
 </body>

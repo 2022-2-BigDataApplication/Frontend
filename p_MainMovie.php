@@ -133,13 +133,13 @@ include('dbconn.php');
     </div>
   </main>
   <?php 
-  mysqli_free_result($data_resource);
-  mysqli_free_result($test_resource);
-  mysqli_free_result($info_resource);
-  mysqli_free_result($company_resource);
-  mysqli_free_result($score_resourse);
-  mysqli_free_result($plot_resource);
-  mysqli_free_result($recent_resource);
+  mysqli_free_result($data_sql);
+  mysqli_free_result($test_sql);
+  mysqli_free_result($info_sql);
+  mysqli_free_result($company_sql);
+  mysqli_free_result($score_sql);
+  mysqli_free_result($plot_sql);
+  mysqli_free_result($recent_sql);
   mysqli_close($connect);
   ?>
 </body>
