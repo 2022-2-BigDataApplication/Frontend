@@ -230,7 +230,8 @@ $view= $_POST['view'];
             while($row = mysqli_fetch_row($res) and $count<20) {
 
                 
-                $_SESSION['poster'] = $row[1];
+                $poster = "http://image.tmdb.org/t/p/w185/$row[1]";
+                $_Session['pathKey'] = $row[1];
                 
                 if ($count%4==0){
                     echo "<tr>";
