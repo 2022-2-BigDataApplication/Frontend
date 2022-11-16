@@ -1,10 +1,9 @@
 <?php
-  session_start();
   include('dbconn.php');
+  include 'log_check.php';
 
   $userId = $_SESSION['userId'];
-  $user_sql = "SELECT * FROM users WHERE userId = '$userId'";
-  $review_sql = "SELECT * FROM review WHERE userId='$userId'";
+  $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
   $reviewcount_sql = "SELECT count(*) FROM review WHERE userId ='$userId'";
 
   $user_resource = mysqli_query($connect, $user_sql);
@@ -46,7 +45,6 @@
     </div>
 
     <?php
-
       $array_sql = "SELECT * from review where userId = '$userId'";
       $array_resource = mysqli_query($connect, $array_sql);
     ?>
@@ -84,7 +82,10 @@
     </div>
 </body>
 <?php 
-mysqli_free_result($user_resource);
+mysqli_free_result($array_resource);
 mysqli_free_result($review_num_resource);
-mysqli_close($connect); ?>
+mysqli_free_result($user_resource);
+
+mysqli_close($connect); 
+?>
 </html>
