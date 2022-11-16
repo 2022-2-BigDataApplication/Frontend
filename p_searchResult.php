@@ -76,7 +76,7 @@ include('dbconn.php');
                             $_Session['pathKey'] = $row2[0];
                         
                     ?>
-                    <td><a href="movieSession.php"><img src=<?=$poster?>></a></td>
+                    <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
                     <?php
                     $count1++;
                     }
@@ -99,7 +99,7 @@ include('dbconn.php');
                         $_Session['pathKey'] = $row2[0];
                 
                 ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?>></a></td>
+                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
                 <?php
                 $count2++;
                 }
@@ -124,7 +124,7 @@ include('dbconn.php');
                         $_SESSION['pathKey'] = $row3[0];
                     
                 ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?>></a></td>
+                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
                 <?php
                 $count3++;
                 }
@@ -151,7 +151,7 @@ include('dbconn.php');
                       $_Session['pathKey'] = $row4[0];
               
               ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?>></a></td>
+                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
               <?php
               $count4++;
               }
