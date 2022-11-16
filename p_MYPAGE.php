@@ -1,6 +1,7 @@
 <?php
   session_start();
   include('dbconn.php');
+
   $userId = $_SESSION['userId'];
   $user_sql = "SELECT * FROM users WHERE userId = '$userId'";
   $review_sql = "SELECT * FROM review WHERE userId='$userId'";
@@ -45,6 +46,7 @@
     </div>
 
     <?php
+
       $array_sql = "SELECT * from review where userId = '$userId'";
       $array_resource = mysqli_query($connect, $array_sql);
     ?>
