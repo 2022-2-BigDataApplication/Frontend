@@ -7,6 +7,7 @@ include('dbconn.php');
 <head>
     <link rel="stylesheet" href="moviedetail.css">
 </head>
+<!--header-->
 <header>
     <h1>New Jelly</h1>
     <?php
@@ -25,6 +26,7 @@ include('dbconn.php');
     </nav>
     <?php } ?>    
 </header>
+
   <body>
   <main>
     <div class="movie-info1"> <!--movie information image, title, etc-->
@@ -101,11 +103,11 @@ include('dbconn.php');
           </textarea> <br>
           <select name="score">
             <option>review score</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </select> <br>
           <input type="submit" name="submit" size="50" value="Done" style="height:30px; width:50px; background-color: green; border: 0px; color: white; font-weight: bold; margin-top: 10px;"/>
         </form>
