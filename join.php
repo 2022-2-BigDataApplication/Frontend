@@ -32,6 +32,6 @@
         mysqli_query($connect, $user_add_sql);
         header('Location: p_login.php');
     }
-
+mysqli_free_result($id_check_resource);
 mysqli_close($con); 
 ?>

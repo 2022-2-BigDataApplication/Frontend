@@ -45,7 +45,9 @@
     </div>
 
     <?php
-      $array_sql = "SELECT * from review where userId = '$userId'";
+      $array_sql = "SELECT m.originalTitle, review.reviewTime, review.rating, review.comments from review as review
+      INNER JOIN movie_metadata as m on review.movieId = m.movieId
+      WHERE userId= '$userId';";
       $array_resource = mysqli_query($connect, $array_sql);
     ?>
     
@@ -69,9 +71,9 @@
                   echo
                     '<table>'
                       . $array_row[0]
+                      . $array_row[1]
                       . $array_row[2]
                       . $array_row[3]
-                      . $array_row[4]
                       . '</p>'
                   ;
                 }
