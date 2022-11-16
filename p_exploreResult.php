@@ -238,8 +238,8 @@ include('dbconn.php');
             }
             
             $res = mysqli_query($connect, $sql);
-
-            while($row = mysqli_fetch_row($res)) {
+            $count=0;
+            while($row = mysqli_fetch_row($res) and $count<10) {
                 
                 $poster = "http://image.tmdb.org/t/p/w185/$row[1]";
                 $_Session['pathKey'] = $row[1];
@@ -247,8 +247,9 @@ include('dbconn.php');
                 ?> 
 
                 <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
-
+                
                 <?php
+                $count++;
             };
        ?>
     </div>
