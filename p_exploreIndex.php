@@ -72,8 +72,8 @@ include('dbconn.php');
 
             Viewing : <select name="view">
                 <option value="0">Recently Released</option>
-                <option value="1">Highly Scored</option>
-                <option value="2">Most Commented</option>
+                <option value="1">Most Commented</option>
+                <option value="2">Highly Scored</option>
             </select>   
                     <br><br><br>
             <button>SUBMIT</button>
