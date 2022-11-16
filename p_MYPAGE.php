@@ -3,7 +3,7 @@
   include('dbconn.php');
 
   $userId = $_SESSION['userId'];
-  $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
+  $user_sql = "SELECT * FROM users WHERE userId = '$userId'";
   $review_sql = "SELECT * FROM review WHERE userId='$userId'";
   $reviewcount_sql = "SELECT count(*) FROM review WHERE userId ='$userId'";
 
@@ -12,7 +12,8 @@
   $user_name = $user_row[2];
   $user_intro = $user_row[3];
 
-  $review_num = mysqli_query($connect, $reviewcount_sql);
+  $review_num_resource = mysqli_query($connect, $reviewcount_sql);
+  $review_num = mysqli_fetch_row($review_num_resource);
 ?>
 
 <!DOCTYPE html>
@@ -41,11 +42,12 @@
     </div>
 
     <div class="count">
-        The number <?php echo $user_name ?> reviewed: <?php echo $review_num ?>
+        The number <?php echo $user_name ?> reviewed: <?php echo $review_num[0] ?>
     </div>
 
     <?php
-      $array_sql = "SELECT * from review where userId = $userId";
+
+      $array_sql = "SELECT * from review where userId = '$userId'";
       $array_resource = mysqli_query($connect, $array_sql);
     ?>
     
@@ -81,5 +83,8 @@
         </div>
     </div>
 </body>
-<?php mysqli_close($con); ?>
+<?php 
+mysqli_free_result($user_resource);
+mysqli_free_result($review_num_resource);
+mysqli_close($connect); ?>
 </html>

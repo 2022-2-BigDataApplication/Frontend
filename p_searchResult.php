@@ -46,19 +46,20 @@ include 'log_check.php';
     </div>
 
     <div class="result">
-        <h3>Search Result</h3>
+        <h3 align = "center">Search Result</h3>
         
         <?php $search_key = $_POST['search_key']; ?>
 
         <!--제목포함-->
-        <div class="A">
-            <p>Title</p>
-                <?php 
-                    $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%';";
+
+        <div class = "A">
+            <p align = "center">Title</p>
+                <table><tr><?php 
+                    $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%' AND length(posterPath) > 0;";
                
                     $result_title= mysqli_query($connect, $sql1);
                     $count1 = 0;
-                     while($row2 = mysqli_fetch_row($result_title) and $count1 <10) {
+                     while($row2 = mysqli_fetch_row($result_title) and $count1<10) {
                     
                             $poster = $row2[0];
                             if(isset($_SESSION['pathKey'])){
@@ -67,22 +68,22 @@ include 'log_check.php';
                             } else {
                                 $_SESSION['pathKey'] = $poster;
                             }
-                            
                         
                     ?>
-                    <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
+                    <td><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>" onerror = "this.style.display = 'none';"/></a></td>
                     <?php
                     $count1++;
                     }
-                ?>
+                ?></tr></table>
         </div>
+        <br><br>
         
-        <!--배우 일치-->    
-        <div class="A">
-            <p>Actor</p>
-            <?php 
+        <!--배우일치-->    
+        <div class = "A">
+            <p align = "center">Actor</p>
+            <table><tr><?php 
                 $sql2 = "SELECT posterPath from movie_metadata
-                    where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key'));";
+                    where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key')) AND length(posterPath) > 0;";
                
                  $result_actor= mysqli_query($connect, $sql2);
                  $count2 = 0;
@@ -97,19 +98,21 @@ include 'log_check.php';
                         }
                 
                 ?>
-                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
+                <td><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>" onerror = "this.style.display = 'none';"/></a></td>
                 <?php
                 $count2++;
                 }
-            ?>
+            ?></tr></table>
         </div>
 
+
         <!--감독 일치-->
-        <div class="A">
-                <p>Director</p>
-                <?php 
+            <div class ="A">
+                <p align = "center">Director</p>
+                <table><tr><?php 
+
                     $sql3 = "SELECT posterPath from movie_metadata
-                    where directorId in (select directorId from director where directorName LIKE '$search_key');";
+                    where directorId in (select directorId from director where directorName LIKE '$search_key') AND length(posterPath) > 0;";
                     
                 ?>
             
@@ -117,7 +120,7 @@ include 'log_check.php';
                  $result_director= mysqli_query($connect, $sql3);
                  $count3 = 0;
                  while($row3 = mysqli_fetch_row($result_director) and $count3<10) {
-                
+
                         $poster = $row3[0];
                         if(isset($_SESSION['pathKey'])){
                             unset($_SESSION['pathKey']);
@@ -127,20 +130,20 @@ include 'log_check.php';
                         }
                     
                 ?>
-                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
+                <td><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>" onerror = "this.style.display = 'none';"/></a></td>
                 <?php
                 $count3++;
                 }
-                ?>
-        </div>
+            ?></tr></table>
+            </div>
         
         <!--키워드포함-->   
-            <div class="A">
-                <p>Keyword</p>
-                <?php 
+            <div class = "A">
+            <p align = "center">Keyword</p>
+            <table><tr><?php 
                     $sql4 = "SELECT posterPath from movie_metadata
                     where movieId in (select movieId from describes
-                    where keywordId = any(select keywordId from keyword where keywordName LIKE '%$search_key%'));";
+                    where keywordId = any(select keywordId from keyword where keywordName LIKE '%$search_key%')) AND length(posterPath) > 0;";
                     
                 ?>
                 <?php
@@ -148,6 +151,7 @@ include 'log_check.php';
                $count4 = 0;
 
                while($row4 = mysqli_fetch_row($result_key) and $count4<10) {
+              
                       $poster = $row4[0];
                       if(isset($_SESSION['pathKey'])){
                         unset($_SESSION['pathKey']);
@@ -157,11 +161,12 @@ include 'log_check.php';
                     }
               
               ?>
-                <article><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>"></a></article>
+                <td><a href="movieSession.php"><img src="http://image.tmdb.org/t/p/w185/<?=$poster?>" onerror = "this.style.display = 'none';"/></a></td>
               <?php
               $count4++;
-              }?> 
-            </div>
+              }
+          ?></tr></table></div>
+
             <?php
                 mysqli_free_result($result_title);
                 mysqli_free_result($result_actor);
