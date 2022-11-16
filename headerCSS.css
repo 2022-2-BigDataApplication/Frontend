@@ -57,12 +57,24 @@ div {
   width: 100%;
   height: 300px;
   align-items: center;
+  
 }
 
 table {
   text-align: left;
+  margin-top: 30px;
   margin-left:auto; 
   margin-right:auto;
+  border: 1px solid #444444;
+  border: 1;
+}
+
+tr{
+  align-items: center;
+}
+
+th, td {
+  border: 1px solid #444444;
 }
 
 .div-parent{
@@ -92,7 +104,9 @@ button{
 }
 
 .genre {
-  background-color: antiquewhite;
+  align-items: center;
+  background-color: white;
+  width: 100%;
 }
 
 .filter{

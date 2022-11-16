@@ -64,6 +64,7 @@ $pass = $_POST['PW'];
             </script>
             ");
         }
-    } 
+    }
+    mysqli_free_result($id_result);
     mysqli_close($connect); 
 ?>
