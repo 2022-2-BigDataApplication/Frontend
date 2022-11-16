@@ -5,11 +5,13 @@
     $movieId = $_SESSION['movieId'];
 
     $userId = $_SESSION['userId'];
-    $date = date('YmdHis');
+    $date = date('Y-m-d H:i:m');
     $comment = $_POST['comment'];
-    $score = $_GET['score'];
+    $score = $_POST['score'];
 
-    $review_add_sql = "INSERT into review (userId, movieId, rating, comments, reviewTime) VAlues ($userId, $movieId, $score, $comment, $date);";
-    mysqli_query($connet, $review_add_sql);
+    if ($userId && $comment && $score ){
+        $review_add_sql = "INSERT into review(userId, movieId, rating, comments, reviewTime) VAlues ('".$userId."', '".$movieId."', '".$score."', '".$comment."', '".$date."');";
+    }
+    mysqli_query($connect, $review_add_sql);
     header('Location: p_MainMovie.php');
 ?>
