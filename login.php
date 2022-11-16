@@ -65,5 +65,5 @@ $pass = $_POST['PW'];
             ");
         }
     } 
-    mysqli_close($con); 
+    mysqli_close($connect); 
 ?>

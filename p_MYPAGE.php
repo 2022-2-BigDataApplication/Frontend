@@ -1,17 +1,18 @@
 <?php
   session_start();
   include('dbconn.php');
-  $user_sql = "SELECT * FROM users WHERE userID = $userId"
-  $review_sql = "SELECT * FROM review WHERE userId=$userId";
-  $reviewcount_sql = "SELECT count(*) FROM review WHERE userId =$userId";
 
-  $user_resource = mysqli_query($user_sql);
+  $userId = $_SESSION['userId'];
+  $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
+  $review_sql = "SELECT * FROM review WHERE userId='$userId'";
+  $reviewcount_sql = "SELECT count(*) FROM review WHERE userId ='$userId'";
+
+  $user_resource = mysqli_query($connect, $user_sql);
   $user_row = mysqli_fetch_row($user_resource);
   $user_name = $user_row[2];
   $user_intro = $user_row[3];
 
-  $review_num_resource = mysqli_query($reviewcount_sql);
-  $review_num = mysqli_fetch_row($review_num_resource);
+  $review_num = mysqli_query($connect, $reviewcount_sql);
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +45,8 @@
     </div>
 
     <?php
-      $array_sql = "SELECT * from review where userId = $userId"
-      $array_resource = mysqli_query($array_sql);
+      $array_sql = "SELECT * from review where userId = $userId";
+      $array_resource = mysqli_query($connect, $array_sql);
     ?>
     
     <div class="reviews">
