@@ -69,12 +69,14 @@
               <?php
                 while ($array_row = mysqli_fetch_row($array_resource)){
                   ?>
+                  <tr>
                   <td><?php echo $array_row[0]?></td>
                   <td><?php echo $array_row[1]?></td>
                   <td><?php echo $array_row[2]?></td>
                   <td><?php echo $array_row[3]?></td>
                   <td><a href="p_edit.php?reviewTime=<?=$array_row[1]?>">Edit</a></td>
                   <td><a href="delete.php?reviewTime=<?=$array_row[1]?>">Delete</a></form></td>
+                  </tr>
                   <?php
                 }
               ?>
