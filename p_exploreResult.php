@@ -2,6 +2,12 @@
 <?php
 session_start();
 include('dbconn.php');
+
+$start_year= $_POST['start_year'];
+$end_year= $_POST['end_year'];
+$genre= $_POST['genre']; 
+$age= $_POST['age'];
+$view= $_POST['view'];
 ?>
 
 <!DOCTYPE html>
@@ -41,8 +47,8 @@ include('dbconn.php');
             <h2>Filtering Option</h2>
             <br>
             
-            RelesedDate:<input type="text" name="start_year" placeholder="start_year" value='1920'>
-                        <input type="text" name="end_year" placeholder="end_year" value='2022'>
+            RelesedDate:<input type="text" name="start_year" placeholder="start_year" value="<?php echo $start_year; ?>">
+                        <input type="text" name="end_year" placeholder="end_year" value="<?php echo $end_year; ?>">
                         <br><br>
                             
             Genre : <input type="checkbox" name="genre[]" value="21" checked>All
@@ -87,12 +93,6 @@ include('dbconn.php');
     <br><br><br>
     <div>
         <?php
-
-            $start_year= $_POST['start_year'];
-            $end_year= $_POST['end_year'];
-            $genre= $_POST['genre']; 
-            $age= $_POST['age'];
-            $view= $_POST['view'];
 
             /* 장르전체 */
             if($genre[0]=='21') {
