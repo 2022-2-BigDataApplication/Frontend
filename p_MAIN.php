@@ -1,6 +1,6 @@
 <?php
-    include 'log_check.php';
-    include 'dbconn.php';
+    include ('log_check.php');
+    include ('dbconn.php');
     $sql_genre_year = "SELECT  z.years, 
     MAX(IF(z.genreId = 12, z.cnt, 0)) AS 'Adventure',
     MAX(IF(z.genreId = 14, z.cnt, 0)) AS 'Fantasy',

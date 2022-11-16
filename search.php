@@ -1,5 +1,5 @@
 <?php
-    include 'dbconn.php';
+    include ('dbconn.php');
     $key = $_GET['search_key'];
 
     $title_sql = 'SELECT originalTitle, posterPath FROM movie_metadata WHERE originalTitle LIKE '$key';';

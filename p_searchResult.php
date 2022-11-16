@@ -1,6 +1,6 @@
 <?php
 include('dbconn.php');
-include 'log_check.php';
+include ('log_check.php');
 ?>
 
 <!DOCTYPE html>

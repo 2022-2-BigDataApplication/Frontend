@@ -1,5 +1,5 @@
 <?php
-include 'log_check.php';
+include ('log_check.php');
 include('dbconn.php');
 ?>
 
