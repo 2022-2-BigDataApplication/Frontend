@@ -22,10 +22,21 @@
 </head>
 <header>
     <h1>New Jelly</h1>
+    <?php
+        if($jb_login) {
+    ?>
     <nav>
       <span><a href="logout.php">Logout</a></span>
-      <span><a href="mypage.php">Mypage</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
     </nav>
+    <?php
+        } else {
+    ?>
+    <nav>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
+    </nav>
+    <?php } ?>    
 </header>
 
 <body>
@@ -45,9 +56,7 @@
     </div>
 
     <?php
-      $array_sql = "SELECT m.originalTitle, review.reviewTime, review.rating, review.comments from review as review
-      INNER JOIN movie_metadata as m on review.movieId = m.movieId
-      WHERE userId= '$userId';";
+      $array_sql = "SELECT * from review where userId = '$userId'";
       $array_resource = mysqli_query($connect, $array_sql);
     ?>
     
@@ -68,6 +77,7 @@
             <tbody>
               <?php
                 while ($array_row = mysqli_fetch_row($array_resource)){
+<<<<<<< Updated upstream
                   ?>
                   <td><?php echo $array_row[0]?></td>
                   <td><?php echo $array_row[1]?></td>
@@ -76,6 +86,16 @@
                   <td><a href="p_edit.php">Edit</a></td>
                   <td><a href="delete.php">Delete</a></td>
                   <?php
+=======
+                  echo
+                    '<table>'
+                      . $array_row[0]
+                      . $array_row[2]
+                      . $array_row[3]
+                      . $array_row[4]
+                      . '</p>'
+                  ;
+>>>>>>> Stashed changes
                 }
               ?>
             </tbody>

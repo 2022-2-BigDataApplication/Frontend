@@ -1,49 +1,43 @@
 <?php
-session_start();
+include 'log_check.php';
 include('dbconn.php');
 ?>
 
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="headerCSS.css">
-    <style>
-        * {margin: 0; padding: 0;}
-        #wrap {
-            width=650px;
-            margin: 0 auto;
-            overflow: hidden;
-            padding-top: 10px;
-        }
-
-        div > article {
-            float: left;
-            margin-left: 10px;
-            margin-bottom: 10px;
-        }
-
-        img {display: block;}
-    </style>
+    <link rel="stylesheet" href="search.css">
 </head>
 
 <body>
-    <header>
-        <h1>New Jelly</h1>
-        <nav>
-        <span><a href="logout.php">Logout</a></span>
-        <span><a href="mypage.html">Mypage</a></span>
-        </nav>
-    </header>
-    <div id="filter">
+<header>
+    <h1>New Jelly</h1>
+    <?php
+        if($jb_login) {
+    ?>
+    <nav>
+      <span><a href="logout.php">Logout</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
+    </nav>
+    <?php
+        } else {
+    ?>
+    <nav>
+      <span><a href="p_login.php">Login</a></span>
+      <span><a href="p_join.php">Join</a></span>
+    </nav>
+    <?php } ?>    
+</header>
+    <div class ="filter">
         <form action="p_exploreResult.php" method="post">
             <h2>Filtering Option</h2>
             <br>
-            
-            RelesedDate:<input type="text" name="start_year" placeholder="start_year">
-                        <input type="text" name="end_year" placeholder="end_year">
+        <div class="filtering">
+            RelesedDate:<input type="text" name="start_year" placeholder="start_year" value='1920'>
+                        <input type="text" name="end_year" placeholder="end_year" value='2022'>
                         <br><br>
                             
-            Genre : <input type="checkbox" name="genre[]" value="21">All
+            Genre : <input type="checkbox" name="genre[]" value="21" checked>All
                     <input type="checkbox" name="genre[]" value="16">Animation
                     <input type="checkbox" name="genre[]" value="12">Adventure
                     <input type="checkbox" name="genre[]" value="10749">Romance
@@ -66,18 +60,20 @@ include('dbconn.php');
                     <input type="checkbox" name="genre[]" value="10769">Foreign
                     <br><br>
 
-            Age Limitation:<input type="radio" name="age" value="all">All
+            Age Limitation:<input type="radio" name="age" value="all" checked>All
                             <input type="radio" name="age" value="kids">Kids
                     <br><br>
 
             Viewing : <select name="view">
+
                 <option value="0">Recently Released</option>
                 <option value="1">Most Commented</option>
                 <option value="2">Highly Scored</option>
             </select>   
                     <br><br><br>
+
             <button>SUBMIT</button>
-            
+        </div> 
         </form>
     </div>
 </body>
