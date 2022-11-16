@@ -95,17 +95,17 @@ include('dbconn.php');
             $view= $_POST['view'];
 
             /* 장르전체 */
-            if($genre[0]='21') {
+            if($genre[0]=='21') {
                 /*성인*/
-                if($age='all') {
+                if($age=='all') {
                     /*최신순*/
-                    if($view='0') {
+                    if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         WHERE DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         ORDER BY openDt desc;";
                     } 
                     /*별점순*/
-                    else if ($view='1') {
+                    else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num` FROM review as r
                         INNER JOIN movie_metadata as m on r.movieId = m.movieId
                         WHERE DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
@@ -125,14 +125,14 @@ include('dbconn.php');
                 } 
                 /*키즈*/
                 else {
-                    if($view='0') {
+                    if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         and adult=0
                         order by openDt desc;";
                     } 
                     /*별점순*/
-                    else if ($view='1') {
+                    else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
                         
@@ -158,16 +158,16 @@ include('dbconn.php');
             /* 장르선택 */
             else {
                 /*성인*/
-                if($age='all') {
+                if($age=='all') {
                     /*최신순*/
-                    if($view='0') {
+                    if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         and (genreId in ($genre))
                         order by openDt desc;";
                     } 
                     /*별점순*/
-                    else if ($view='1') {
+                    else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
                         
@@ -197,7 +197,7 @@ include('dbconn.php');
                 /*키즈*/
                 else {
                     /*최신순*/
-                    if($view='0') {
+                    if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         and (genreId in ($genre))
@@ -205,7 +205,7 @@ include('dbconn.php');
                         order by openDt desc;";
                     } 
                     /*별점순*/
-                    else if ($view='1') {
+                    else if ($view=='1') {
                         $sql = "SELECT m.originalTitle, m.posterPath, count(*) AS `review_num`FROM review as r
                         inner join movie_metadata as m on r.movieId = m.movieId
                         
@@ -236,22 +236,32 @@ include('dbconn.php');
                     } 
                 }
             }
-            
+        
             $res = mysqli_query($connect, $sql);
+
+            ?>
+
+            <table><?php
             $count=0;
-            while($row = mysqli_fetch_row($res) and $count<10) {
+            while($row = mysqli_fetch_row($res) and $count<20) {
                 
                 $poster = "http://image.tmdb.org/t/p/w185/$row[1]";
                 $_Session['pathKey'] = $row[1];
                 
+                if ($count%4==0){
+                    echo "<tr>";
+                }
                 ?> 
-
-                <article><a href="movieSession.php"><img src=<?=$poster?>></a></article>
+                
+                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
                 
                 <?php
+                if ($count%4==3){
+                    echo "</tr>";
+                }
                 $count++;
             };
-       ?>
+       ?></table>
     </div>
     <?php mysqli_close($connect);?>
 </body>
