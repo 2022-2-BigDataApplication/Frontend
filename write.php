@@ -4,7 +4,7 @@
 
     $movieId = $_SESSION['movieId'];
 
-    $userId = $_SESSION['userid'];
+    $userId = $_SESSION['userId'];
     $date = date('YmdHis');
     $comment = $_POST['comment'];
     $score = $_GET['score'];
