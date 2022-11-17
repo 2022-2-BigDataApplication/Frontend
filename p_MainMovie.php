@@ -38,7 +38,8 @@ include('dbconn.php');
         $test_resource = mysqli_query($connect, $test_sql);
         $test_row = mysqli_fetch_row($test_resource);
         ?>
-        <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'">
+        <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" style="width:185px; height:265px;" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'">
+
       </div>
       <div class="movie-info3">
             <?php
@@ -61,15 +62,18 @@ include('dbconn.php');
           ?>
           <table class="score-table">
             <tr>
-              <td><?php echo $score_row[0];?></td>
-              <td><?php echo $score_row[1];?></td>
+              <td>score: <?php echo $score_row[0];?></td>
+              <td>participants: <?php echo $score_row[1];?></td>
             </tr>
           </table>
         </div>
         <div class="movie-info4">
           <table class="movie-info4">
             <?php
-            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>",$company_row[0],"</TD></TR>"
+            if($company_row[0]==NULL){
+              $company_row[0] = 'Non';
+            }
+            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>", $company_row[0],"</TD></TR>"
             ?>
           </table>
         </div>
@@ -117,7 +121,6 @@ include('dbconn.php');
                 $movie = $_SESSION['movieId'];
                 $recent_sql = "SELECT reviewTime, rating, comments from review where movieId = '$movie' ORDER BY reviewTime desc LIMIT 3;";
                 $recent_resource = mysqli_query($connect, $recent_sql);
-                $recent_row = mysqli_fetch_row($recent_resource);
                 while ($recent_row = mysqli_fetch_row($recent_resource)){
                   ?>
                   <tr>
