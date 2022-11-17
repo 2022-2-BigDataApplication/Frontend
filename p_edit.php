@@ -1,4 +1,4 @@
-dd<?php
+<?php
   include('dbconn.php');
   include 'log_check.php;
 
