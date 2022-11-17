@@ -106,11 +106,13 @@ include ('log_check.php');
                     from characters
                     where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key')) AND length(posterPath) > 0;";
                 */
-                $sql2 = "select m.originalTitle, m.posterPath, a.actorName
+                $sql2 = "select m.originalTitle, m.posterPath, a.actorName, m.popularity
                 from movie_metadata m
-                inner join characters c using (movieId)
-                inner join actor a using (actorId)
-                where a.actorName like '%$search_key%' and length(m.posterPath)>0;";
+                left join characters c using (movieId)
+                left join actor a using (actorId)
+                where a.actorName like '%$search_key%' and length(m.posterPath)>0
+                group by m.originalTitle
+                order by m.popularity desc;";
                    
                
                  $result_actor= mysqli_query($connect, $sql2);
