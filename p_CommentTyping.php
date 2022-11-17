@@ -1,6 +1,7 @@
 <?php
 include('log_check.php');
 include('dbconn.php');
+$movie = $_SESSION['movieId'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,9 +71,11 @@ include('dbconn.php');
           <table class="movie-info4">
             <?php
             if($company_row[0]==NULL){
-              $company_row[0] = 'Non';
+              $company = 'Non';
+            } else {
+              $company = $company_row[0];
             }
-            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>",$company_row[0],"</TD></TR>"
+            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>",$company,"</TD></TR>"
             ?>
           </table>
         </div>
@@ -87,6 +90,35 @@ include('dbconn.php');
       $plot_row = mysqli_fetch_row($plot_resource);
       echo "<font-size: 15px>",$plot_row[0],"</font>";
       ?>
+          <div> <!--배우 배역 나열 표-->
+            <table style="text-align: center; padding-top: 10px"> 
+              <?php
+                $char_sql = "SELECT a.actorName from actor as a
+                  inner join characters as c on a.actorId = c.actorId
+                  where movieId = $movie order by c.characterOrder LIMIT 5;";
+                $char_resource = mysqli_query($connect, $char_sql);
+              ?>
+              <tr>
+                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Actor</th>
+                <?php
+                  while ($char_row = mysqli_fetch_row($char_resource)){
+                ?>
+                  <td style="width: 130px; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+
+                <?php
+                  $char_sql = "SELECT c.characterName from actor as a
+                    inner join characters as c on a.actorId = c.actorId
+                    where movieId = $movie order by c.characterOrder LIMIT 5;";
+                  $char_resource = mysqli_query($connect, $char_sql);
+                ?>
+              <tr>
+                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Character</th>
+                <?php
+                  while ($char_row = mysqli_fetch_row($char_resource)){
+                ?>
+                  <td style="width: 130px ; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+              </table>
+            </div>
     </div>
 
     <div class="comment-recent"><!--movie comments (3) recent-->
@@ -116,12 +148,6 @@ include('dbconn.php');
     </div>
 
   </main>
-  <?php 
-  mysqli_free_result($data_resource);
-  mysqli_free_result($test_resource);
-  mysqli_free_result($info_resource);
-  mysqli_free_result($company_resource);
-  mysqli_free_result($plot_resource);
-  mysqli_close($connect); ?>
+  <?php mysqli_close($con); ?>
 </body>
 </html>
