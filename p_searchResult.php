@@ -164,7 +164,7 @@ include ('log_check.php');
                 <td><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></td>
                 </tr><tr>
                         <td> <form action="movieSession.php" method="POST">
-                            <input type="submit" name="pathKey" value ="<?=$title ?>">
+                            <input type="submit" name="pathKey" value ="<?=$title4 ?>">
                         </form>
                     </td>
               <?php
