@@ -24,7 +24,7 @@
     <h1>New Jelly</h1>
     <nav>
       <span><a href="logout.php">Logout</a></span>
-      <span><a href="mypage.php">Mypage</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
     </nav>
 </header>
 

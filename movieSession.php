@@ -1,7 +1,7 @@
 <?php
     session_start();
     include 'dbconn.php';
-    $movieId_sql = "SELECT movieId from movie_metadata where posterPath = '".$_SESSION['pathKey']."';";
+    $movieId_sql = "SELECT movieId from movie_metadata where originalTitle = '".$_POST['pathKey']."';";
     $movieId_resoure = mysqli_query($connect, $movieId_sql);
     $movieId = mysqli_fetch_row($movieId_resoure);
 

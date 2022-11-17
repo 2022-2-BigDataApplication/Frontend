@@ -55,23 +55,27 @@ include ('log_check.php');
         <h3 align = "center">Search Result</h3>
         
         <?php $search_key = $_POST['search_key']; ?>
-        
-        
+              
         <!--제목포함-->
         <div>
             <p align = "center">Title</p>
                 <table><tr><?php 
-                    $sql1 = "SELECT posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%' AND length(posterPath) > 0;";
+                    $sql1 = "SELECT originalTitle, posterPath FROM movie_metadata WHERE originalTitle LIKE '%$search_key%' AND length(posterPath) > 0;";
                
                     $result_title= mysqli_query($connect, $sql1);
                     $count1 = 0;
-                     while($row2 = mysqli_fetch_row($result_title) and $count1<10) {
+                     while($row1 = mysqli_fetch_row($result_title) and $count1<10) {
                     
-                            $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
-                            $_Session['pathKey'] = $row2[0];
+                            $poster = "http://image.tmdb.org/t/p/w185/$row1[1]";
+                            $title1 = $row1[0]
                         
                     ?>
-                    <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
+                    <td><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></td>
+                     </tr><tr>
+                        <td> <form action="movieSession.php" method="POST">
+                            <input type="submit" name="pathKey" value ="<?=$title1?>">
+                        </form>
+                    </td>
                     <?php
                     $count1++;
                     }
@@ -79,22 +83,27 @@ include ('log_check.php');
         </div>
         <br><br>
         
-        <!--배우일치-->    
+        <!--배우 일치-->    
         <div>
             <p align = "center">Actor</p>
             <table><tr><?php 
-                $sql2 = "SELECT posterPath from movie_metadata
+                $sql2 = "SELECT originalTitle, posterPath from movie_metadata
                     where movieId in (select movieId from characters where actorId = ANY(SELECT actorId FROM actor WHERE actorName LIKE '$search_key')) AND length(posterPath) > 0;";
                
                  $result_actor= mysqli_query($connect, $sql2);
                  $count2 = 0;
                  while($row2 = mysqli_fetch_row($result_actor) and $count2<10) {
                 
-                        $poster = "http://image.tmdb.org/t/p/w185/$row2[0]";
-                        $_Session['pathKey'] = $row2[0];
+                        $poster = "http://image.tmdb.org/t/p/w185/$row2[1]";
+                        $title2 = $row2[0];
                 
                 ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
+                <td><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></td>
+                </tr><tr>
+                        <td> <form action="movieSession.php" method="POST">
+                            <input type="submit" name="pathKey" value ="<?=$title2?>">
+                        </form>
+                    </td>
                 <?php
                 $count2++;
                 }
@@ -102,7 +111,8 @@ include ('log_check.php');
         </div>
             <br><br>
 
-            <div>
+        <!--감독 일치-->
+        <div>
                 <p align = "center">Director</p>
                 <table><tr><?php 
                     $sql3 = "SELECT posterPath from movie_metadata
@@ -115,23 +125,28 @@ include ('log_check.php');
                  $count3 = 0;
                  while($row3 = mysqli_fetch_row($result_director) and $count3<10) {
                 
-                        $poster = "http://image.tmdb.org/t/p/w185/$row3[0]";
-                        $_SESSION['pathKey'] = $row3[0];
+                        $poster = "http://image.tmdb.org/t/p/w185/$row3[1]";
+                        $title3 = $row3[0];
                     
                 ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
+                <td><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></td>
+                </tr><tr>
+                        <td> <form action="movieSession.php" method="POST">
+                            <input type="submit" name="pathKey" value ="<?=$title3?>">
+                        </form>
+                    </td>
                 <?php
                 $count3++;
                 }
             ?></tr></table>
-            </div>
+        </div>
         
         <!--키워드포함-->
-            <br><br>    
-            <div>
+        <br><br>    
+        <div>
             <p align = "center">Keyword</p>
             <table><tr><?php 
-                    $sql4 = "SELECT posterPath from movie_metadata
+                    $sql4 = "SELECT originalTitle, posterPath from movie_metadata
                     where movieId in (select movieId from describes
                     where keywordId = any(select keywordId from keyword where keywordName LIKE '%$search_key%')) AND length(posterPath) > 0;";
                     
@@ -142,15 +157,22 @@ include ('log_check.php');
 
                while($row4 = mysqli_fetch_row($result_key) and $count4<10) {
               
-                      $poster = "http://image.tmdb.org/t/p/w185/$row4[0]";
-                      $_Session['pathKey'] = $row4[0];
+                      $poster = "http://image.tmdb.org/t/p/w185/$row4[1]";
+                      $title4 = $row4[0];
               
               ?>
-                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
+                <td><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></td>
+                </tr><tr>
+                        <td> <form action="movieSession.php" method="POST">
+                            <input type="submit" name="pathKey" value ="<?=$title ?>">
+                        </form>
+                    </td>
               <?php
               $count4++;
               }
-          ?></tr></table></div>
+            ?></tr></table>
+        </div>
+
             <?php
                 mysqli_free_result($result_title);
                 mysqli_free_result($result_actor);
