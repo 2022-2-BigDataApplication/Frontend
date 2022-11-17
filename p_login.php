@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="headerCSS.css">
 </head>
 <header>
-    <h1>New Jelly</h1>
+<h1><a href="p_MAIN.php">New Jelly</a></h1>
     <nav>
       <span><a href="p_login.php">Login</a></span>
       <span><a href="p_join.php">Join</a></span>
