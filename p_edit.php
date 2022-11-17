@@ -1,6 +1,5 @@
 dd<?php
   include('dbconn.php');
-  include 'log_check.php';
 
   $userId = $_SESSION['userId'];
   $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
@@ -24,7 +23,7 @@ dd<?php
     <h1><a href="p_MAIN.php" style="color:white; text-decoration: none;">New Jelly</a></h1>
     <nav>
       <span><a href="logout.php">Logout</a></span>
-      <span><a href="mypage.php">Mypage</a></span>
+      <span><a href="p_MYPAGE.php">Mypage</a></span>
     </nav>
 </header>
 
