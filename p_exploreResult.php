@@ -51,47 +51,47 @@ $view= $_POST['view'];
             <tr>
                 <td>Genre : </td>
                 <td>
-                    <input type="checkbox" name="genre[]" value="21" checked>All
-                    <input type="checkbox" name="genre[]" value="16">Animation
-                    <input type="checkbox" name="genre[]" value="12">Adventure
-                    <input type="checkbox" name="genre[]" value="10749">Romance
-                    <input type="checkbox" name="genre[]" value="35">Comedy
+                    <input type="radio" name="genre" value="21" checked>All
+                    <input type="radio" name="genre" value="16">Animation
+                    <input type="radio" name="genre" value="12">Adventure
+                    <input type="radio" name="genre" value="10749">Romance
+                    <input type="radio" name="genre" value="35">Comedy
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="checkbox" name="genre[]" value="28">Action
-                    <input type="checkbox" name="genre[]" value="10751">Family
-                    <input type="checkbox" name="genre[]" value="36">History
-                    <input type="checkbox" name="genre[]" value="18">Drama
-                    <input type="checkbox" name="genre[]" value="80">Crime
+                    <input type="radio" name="genre" value="28">Action
+                    <input type="radio" name="genre" value="10751">Family
+                    <input type="radio" name="genre" value="36">History
+                    <input type="radio" name="genre" value="18">Drama
+                    <input type="radio" name="genre" value="80">Crime
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>   
-                    <input type="checkbox" name="genre[]" value="878">Science Fiction
-                    <input type="checkbox" name="genre[]" value="14">Fantasy
-                    <input type="checkbox" name="genre[]" value="10402">Music
-                    <input type="checkbox" name="genre[]" value="27">Horror
-                    <input type="checkbox" name="genre[]" value="99">Documentary
+                    <input type="radio" name="genre" value="878">Science Fiction
+                    <input type="radio" name="genre" value="14">Fantasy
+                    <input type="radio" name="genre" value="10402">Music
+                    <input type="radio" name="genre" value="27">Horror
+                    <input type="radio" name="genre" value="99">Documentary
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td> 
-                    <input type="checkbox" name="genre[]" value="9648">Mystery
-                    <input type="checkbox" name="genre[]" value="53">Thriller
-                    <input type="checkbox" name="genre[]" value="37">Western
-                    <input type="checkbox" name="genre[]" value="10770">TV Movie
-                    <input type="checkbox" name="genre[]" value="10752">War
+                    <input type="radio" name="genre" value="9648">Mystery
+                    <input type="radio" name="genre" value="53">Thriller
+                    <input type="radio" name="genre" value="37">Western
+                    <input type="radio" name="genre" value="10770">TV Movie
+                    <input type="radio" name="genre" value="10752">War
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td> 
-                    <input type="checkbox" name="genre[]" value="10769">Foreign
+                    <input type="radio" name="genre" value="10769">Foreign
                 </td>
             </tr>
                     <br><br>
@@ -124,9 +124,9 @@ $view= $_POST['view'];
         <?php
 
             /* 장르전체 */
-            if($genre[0]=='21') {
+            if($genre=='21') {
                 /*성인*/
-                echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre[0], for $age, in order of $view</p>";
+                echo "<p align = \"center\">show movies $start_year ~ $end_year all genre, for $age, in order of $view</p>";
 
                 if($age=='all') {
                     /*최신순*/
@@ -189,7 +189,7 @@ $view= $_POST['view'];
             /* 장르선택 */
             else {
 
-                for ($i=0;$i<count($genre);$i++){
+               
                     /*
                     $start_year= $_POST['start_year'];
                     $end_year= $_POST['end_year'];
@@ -197,7 +197,7 @@ $view= $_POST['view'];
                     $age= $_POST['age'];
                     $view= $_POST['view'];
                     */
-                    echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre[$i], for $age, in order of $view</p>";
+                    echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre, for $age, in order of $view</p>";
                 
                 /*성인*/
                 if($age=='all') {
@@ -205,7 +205,7 @@ $view= $_POST['view'];
                     if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                         order by openDt desc;";
                     } 
                     /*리뷰순*/
@@ -215,7 +215,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                     
                         GROUP BY m.movieId
                         
@@ -228,7 +228,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                         
                         GROUP BY m.movieId
                         
@@ -241,7 +241,7 @@ $view= $_POST['view'];
                     if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                         and adult=0
                         order by openDt desc;";
                     } 
@@ -252,7 +252,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                         and adult=0
                         GROUP BY m.movieId
                         
@@ -265,7 +265,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId = $genre[$i])
+                        and (genreId = $genre)
                         and adult=0
                         GROUP BY m.movieId
                         
@@ -273,7 +273,6 @@ $view= $_POST['view'];
                     } 
                 }
 
-            }
             }
         
             $res = mysqli_query($connect, $sql);
