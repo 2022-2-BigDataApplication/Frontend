@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="mypage.css">
 </head>
 <header>
-    <h1>New Jelly</h1>
+<h1><a href="p_MAIN.php">New Jelly</a></h1>
     <nav>
       <span><a href="logout.php">Logout</a></span>
       <span><a href="p_MYPAGE.php">Mypage</a></span>

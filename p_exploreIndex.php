@@ -11,7 +11,7 @@ include('dbconn.php');
 
 <body>
 <header>
-    <h1>New Jelly</h1>
+    <h1><a href="p_MAIN.php">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>

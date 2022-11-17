@@ -43,7 +43,7 @@ $result_genre_year = mysqli_query($connect, $sql_genre_year);
 </head>
 
 <header>
-    <h1>New Jelly</h1>
+<h1>New Jelly</h1>
     <?php
         if($jb_login) {
     ?>

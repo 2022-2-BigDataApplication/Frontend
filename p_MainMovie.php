@@ -8,7 +8,7 @@ include('dbconn.php');
     <link rel="stylesheet" href="moviedetail.css">
 </head>
 <header>
-    <h1>New Jelly</h1>
+<h1><a href="p_MAIN.php">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>
@@ -38,7 +38,7 @@ include('dbconn.php');
         $test_resource = mysqli_query($connect, $test_sql);
         $test_row = mysqli_fetch_row($test_resource);
         ?>
-        <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" alt="<?= $test_row[0]?>">
+        <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'">
       </div>
       <div class="movie-info3">
             <?php
