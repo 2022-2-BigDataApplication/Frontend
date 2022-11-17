@@ -118,3 +118,13 @@ img {
   border: 1px solid rgb(226, 255, 167);
   border-radius: 30px;
 }
+
+.explore_summary{
+  border: 1px solid rgb(226, 255, 167);
+  text-align: center;
+  font-size: 20px;
+  margin: auto;
+  padding: 10px;
+  color: rgb(0, 119, 0);
+  font-weight: bold;
+}

@@ -126,7 +126,17 @@ $view= $_POST['view'];
             /* 장르전체 */
             if($genre=='21') {
                 /*성인*/
-                echo "<p align = \"center\">show movies $start_year ~ $end_year all genre, for $age, in order of $view</p>";
+                $view_mode = "";
+                if($view==0){
+                    $view_mode="Recently Released";
+                }
+                else if ($view==1) {
+                    $view_mode="Most Commented";
+                }
+                else {
+                    $view_mode="Highly Scored";
+                }
+                echo "<p class = \"explore_summary\">show All movies between $start_year ~ $end_year, for $age, in order of $view_mode</p>";
 
                 if($age=='all') {
                     /*최신순*/
@@ -188,7 +198,66 @@ $view= $_POST['view'];
             } 
             /* 장르선택 */
             else {
-
+                    if ($genre=='16'){
+                        $genreNm="Animation";
+                    }
+                    else if ($genre=='12'){
+                        $genreNm="Adventure";
+                    }
+                    else if ($genre=='10749'){
+                        $genreNm="Romance";
+                    }
+                    else if ($genre=='35'){
+                        $genreNm="Comedy";
+                    }
+                    else if ($genre=='28'){
+                        $genreNm="Action";
+                    }
+                    else if ($genre=='10751'){
+                        $genreNm="Family";
+                    }
+                    else if ($genre=='36'){
+                        $genreNm="History";
+                    }
+                    else if ($genre=='18'){
+                        $genreNm="Drama";
+                    }
+                    else if ($genre=='80'){
+                        $genreNm="Crime";
+                    }
+                    else if ($genre=='878'){
+                        $genreNm="Science Fiction";
+                    }
+                    else if ($genre=='14'){
+                        $genreNm="Fantasy";
+                    }
+                    else if ($genre=='10402'){
+                        $genreNm="Music";
+                    }
+                    else if ($genre=='27'){
+                        $genreNm="Horror";
+                    }
+                    else if ($genre=='99'){
+                        $genreNm="Documentary";
+                    }
+                    else if ($genre=='9648'){
+                        $genreNm="Mystery";
+                    }
+                    else if ($genre=='53'){
+                        $genreNm="Thriller";
+                    }
+                    else if ($genre=='37'){
+                        $genreNm="Western";
+                    }
+                    else if ($genre=='10770'){
+                        $genreNm="TV Movie";
+                    }
+                    else if ($genre=='10752'){
+                        $genreNm="War";
+                    }
+                    else{
+                        $genreNm="Foreign";
+                    }
                
                     /*
                     $start_year= $_POST['start_year'];
@@ -197,7 +266,18 @@ $view= $_POST['view'];
                     $age= $_POST['age'];
                     $view= $_POST['view'];
                     */
-                    echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre, for $age, in order of $view</p>";
+
+                    $view_mode = "";
+                    if($view==0){
+                        $view_mode="Recently Released";
+                    }
+                    else if ($view==1) {
+                        $view_mode="Most Commented";
+                    }
+                    else {
+                        $view_mode="Highly Scored";
+                    }
+                    echo "<p class = \"explore_summary\">show $genreNm movies between $start_year ~ $end_year, for $age, in order of $view_mode</p>";
                 
                 /*성인*/
                 if($age=='all') {
