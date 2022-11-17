@@ -1,6 +1,6 @@
 <?php
   include('dbconn.php');
-  include ('log_check.php');
+  include 'log_check.php';
 
   $userId = $_SESSION['userId'];
   $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="mypage.css">
 </head>
 <header>
-<h1><a href="p_MAIN.php">New Jelly</a></h1>
+<h1><a href="p_MAIN.php"style="color:white; text-decoration: none;">New Jelly</a></h1>
     <nav>
       <span><a href="logout.php">Logout</a></span>
       <span><a href="p_MYPAGE.php">Mypage</a></span>
@@ -53,7 +53,7 @@
     
     <div class="reviews">
         <h3><?php echo $user_name ?>'s reviews</h3>
-        <div class="array"  style="overflow: hidden; height:auto;">
+        <div class="array">
           <table>
             <thead>
               <tr>

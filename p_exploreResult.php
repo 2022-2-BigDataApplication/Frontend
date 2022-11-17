@@ -17,7 +17,7 @@ $view= $_POST['view'];
 
 <body>
 <header>
-<h1><a href="p_MAIN.php">New Jelly</a></h1>
+<h1><a href="p_MAIN.php" style="color:white; text-decoration: none;">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>
@@ -385,6 +385,8 @@ $view= $_POST['view'];
             };
        ?></table>
     </div>
-    <?php mysqli_close($connect);?>
+    <?php 
+    mysqli_free_result($res);
+    mysqli_close($connect);?>
 </body>
 </html>

@@ -21,7 +21,7 @@ dd<?php
     <link rel="stylesheet" href="mypage.css">
 </head>
 <header>
-    <h1><a href="p_MAIN.php">New Jelly</a></h1>
+    <h1><a href="p_MAIN.php" style="color:white; text-decoration: none;">New Jelly</a></h1>
     <nav>
       <span><a href="logout.php">Logout</a></span>
       <span><a href="mypage.php">Mypage</a></span>

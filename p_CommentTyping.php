@@ -9,7 +9,7 @@ $movie = $_SESSION['movieId'];
     <link rel="stylesheet" href="moviedetail.css">
 </head>
 <header>
-    <h1><a href="p_MAIN.php">New Jelly</a></h1>
+    <h1><a href="p_MAIN.php"style="color:white; text-decoration: none;"s>New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>

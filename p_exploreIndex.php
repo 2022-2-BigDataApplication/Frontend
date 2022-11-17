@@ -11,7 +11,7 @@ include('dbconn.php');
 
 <body>
 <header>
-    <h1><a href="p_MAIN.php">New Jelly</a></h1>
+    <h1><a href="p_MAIN.php"style="color:white; text-decoration: none;">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>
@@ -115,5 +115,4 @@ include('dbconn.php');
         </form>
     </div>
 </body>
-<?php mysqli_close($connect); ?>
 </html>

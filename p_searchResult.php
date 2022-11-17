@@ -13,7 +13,7 @@ include ('log_check.php');
 <body>
     <!--상단바-->
 <header>
-<h1><a href="p_MAIN.php">New Jelly</a></h1>
+<h1><a href="p_MAIN.php" style="color:white; text-decoration: none;">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>
