@@ -6,7 +6,7 @@ header {
   
   height: 40px;
   padding: 1rem;
-  color: white;
+  color:  #f5f5f5;
   background: rgb(0, 116, 21);
   font-weight: bold;
   display: flex;
@@ -15,7 +15,7 @@ header {
 }
 
 nav a{
-  color:white;
+  color: #f5f5f5;
   text-align: right;
   text-decoration: none;
   padding-right: 15px;
@@ -46,8 +46,9 @@ main {
 }
 
 body {
+  padding-inline: 100px;
   padding-top: 75px;
-  background: white;
+  background:  #f5f5f5;
 }
 
 body, html {
@@ -64,6 +65,8 @@ div {
   align-items: center;
 }
 
+
+
 .movie-info1 {
   align-items: center;
   clear: both;
@@ -79,6 +82,7 @@ div {
 .poster-image-div{
   margin: auto;
   display: table-cell;
+  align-items: center;
   vertical-align: middle;
   float: left;
   width: 40%;
@@ -88,8 +92,9 @@ div {
 .movie-info3{
   margin: auto;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align:middle;
   float: right;
+  align-items: flex-start;
   width: 60%;
   height: 400px;
 }
@@ -103,7 +108,7 @@ img {
 .movie-title {
   text-align: left;
   margin:auto;
-  margin-top: 200px;
+  color:rgb(0, 116, 21);
   font-size: 30px;
   float: left;
   width: 60%;
@@ -111,6 +116,7 @@ img {
 }
 
 .movie-score {
+  color: #73685d;
   text-align: center;
   margin:auto;
   margin-top: 20px;
@@ -121,11 +127,13 @@ img {
 }
 
 .score-table {
+  color: #73685d;
   text-align: center;
   font-size: 20px;
 }
 
 .movie-info4 {
+  color: #73685d;
   text-align: center;
   margin: auto;
   font-size: 15px;
@@ -134,6 +142,7 @@ img {
 }
 
 .movie-director {
+  color: #73685d;
   text-align: left;
   font-size: 15px;
 }
@@ -146,7 +155,7 @@ img {
 .comment-header{
   height: 40px;
   padding: 1rem;
-  color: white;
+  color:  #f5f5f5;
   background: rgb(0, 116, 21);
   font-weight: bold;
   display: flex;
@@ -170,7 +179,7 @@ table {
 th, td {
   padding-top: 20px;
   text-align: left;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid  #f5f5f5;
 }
 
 tr {

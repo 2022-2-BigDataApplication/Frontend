@@ -373,7 +373,14 @@ $view= $_POST['view'];
                 ?> 
                 <td><img src=<?=$poster?> style="width:185px; height:265px;" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'"/>
                     <form action="movieSession.php" method="POST">
-                    <input type="submit" name="pathKey" value ="<?=$title5 ?>" align = "middle" style="height:50px; width:185px;">
+                    <input type="submit" name="pathKey" value ="<?=$title5 ?>" align = "middle"
+                    style="height:50px; width:185px;border: 1px #a39485 solid;
+                    font-size: .9em;
+                    
+                    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+                    border-collapse: collapse;
+                    border-radius: 5px;
+                    overflow: hidden;">
                     </form>
                 </td>
                 <?php

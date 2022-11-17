@@ -69,13 +69,13 @@ $result_genre_year = mysqli_query($connect, $sql_genre_year);
     </div>
 
     <div class = "genre">
-        show movies by genre and time
+        <p align = "center">show movies by genre and time</p>
         <table>
-        <tr><td>year</td><td>Adventure</td><td>Fantasy</td><td>Animation</td>
-            <td>Drama</td><td>Horror</td><td>Action</td><td>Comedy</td><td>History</td>
-            <td>Western</td><td>Thriller</td><td>Crime</td><td>Documentary</td>
-            <td>Science Fiction</td><td>Mystery</td><td>Music</td><td>Romance</td><td>Family</td>
-            <td>War</td><td>Foreign</td><td>TV Movie</td>
+        <tr><th>year</th><th>Adventure</th><th>Fantasy</th><th>Animation</th>
+            <th>Drama</th><th>Horror</th><th>Action</th><th>Comedy</th><th>History</th>
+            <th>Western</th><th>Thriller</th><th>Crime</th><th>Documentary</th>
+            <th>Science Fiction</th><th>Mystery</th><th>Music</th><th>Romance</th><th>Family</th>
+            <th>War</th><th>Foreign</th><th>TV Movie</th>
         </tr>
         <?php
         while($row = mysqli_fetch_array($result_genre_year)){
@@ -101,7 +101,7 @@ $result_genre_year = mysqli_query($connect, $sql_genre_year);
             $Foreign = $row['Foreign']; 
             $TV_Movie = $row['TV Movie']; 
         
-            echo "<tr align=\"center\"><td>$year</td><td>$Adventure</td><td>$Fantasy</td><td>$Animation</td>
+            echo "<tr align=\"center\"><th>$year</th><td>$Adventure</td><td>$Fantasy</td><td>$Animation</td>
             <td>$Drama</td><td>$Horror</td><td>$Action</td><td>$Comedy</td><td>$History</td>
             <td>$Western</td><td>$Thriller</td><td>$Crime</td><td>$Documentary</td>
             <td>$Science_Fiction</td><td>$Mystery</td><td>$Music</td><td>$Romance</td><td>$Family</td>

@@ -88,15 +88,29 @@ $movie = $_SESSION['movieId'];
       </div>
 
     <div class="movie-info2"><!--movie infromation plot, director, actors-->
-      <p style="font-size: 25px; font-weight: bold;">Movie Plot</p>
+      <article style = "border: 1px #a39485 solid;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom:50px;
+  padding-left:50px;
+  padding-right:50px;"><p style="color: #73685d; font-size: 25px; font-weight: bold; margin-bottom: 20px;">Movie Plot</p>
       <?php
       $plot_sql = "SELECT overview from movie_metadata where movieId='".$_SESSION['movieId']."'";
       $plot_resource = mysqli_query($connect, $plot_sql);
       $plot_row = mysqli_fetch_row($plot_resource);
-      echo "<font-size: 15px>",$plot_row[0],"</font>";
-      ?>
+      echo "<p style = \"font-size: 15px; margin-bottom: 20px;\">",$plot_row[0],"</p>";
+      ?></article>
           <div> <!--배우 배역 나열 표-->
-            <table style="text-align: center; padding-top: 10px"> 
+            <table style="border: 1px #a39485 solid;
+            font-size: .9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,.25);
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;"> 
               <?php
                 $char_sql = "SELECT a.actorName from actor as a
                   inner join characters as c on a.actorId = c.actorId
@@ -104,11 +118,18 @@ $movie = $_SESSION['movieId'];
                 $char_resource = mysqli_query($connect, $char_sql);
               ?>
               <tr>
-                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Actor</th>
+                <th scope ="row" style="text-align: left;
+                font-weight: bold;
+                color: #fff;
+                background: #73685d;
+                padding: 1em .5em;
+                vertical-align: middle;">Actor</th>
                 <?php
                   while ($char_row = mysqli_fetch_row($char_resource)){
                 ?>
-                  <td style="width: 130px; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+                  <td style="padding: 1em .5em;
+                  vertical-align: middle;border-bottom: 1px solid rgba(0,0,0,.1);
+                  background: #fff;"><?php echo $char_row[0]?></td><?php } ?>
 
                 <?php
                   $char_sql = "SELECT c.characterName from actor as a
@@ -117,15 +138,22 @@ $movie = $_SESSION['movieId'];
                   $char_resource = mysqli_query($connect, $char_sql);
                 ?>
               <tr>
-                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Character</th>
+                <th scope ="row" style="text-align: left;
+                font-weight: bold;
+                color: #fff;
+                background: #73685d;
+                padding: 1em .5em;
+                vertical-align: middle;">Character</th>
                 <?php
                   while ($char_row = mysqli_fetch_row($char_resource)){
                 ?>
-                  <td style="width: 130px ; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+                  <td style="padding: 1em .5em;
+                  vertical-align: middle;border-bottom: 1px solid rgba(0,0,0,.1);
+                  background: #fff;"><?php echo $char_row[0]?></td><?php } ?>
               </table>
             </div>
     </div>
-
+<br><br><br><br><br><br>
     <div class="comment-recent"><!--movie comments (3) recent-->
         <div class="comment-header">
             <h1>Recent Comments</h1>
