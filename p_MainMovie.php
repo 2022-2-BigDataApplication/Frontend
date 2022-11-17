@@ -1,6 +1,7 @@
 <?php
 include('log_check.php');
 include('dbconn.php');
+$movie = $_SESSION['movieId'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@ include('dbconn.php');
     <link rel="stylesheet" href="moviedetail.css">
 </head>
 <header>
-<h1><a href="p_MAIN.php">New Jelly</a></h1>
+  <h1><a href="p_MAIN.php">New Jelly</a></h1>
     <?php
         if($jb_login) {
     ?>
@@ -41,6 +42,7 @@ include('dbconn.php');
         <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" style="width:185px; height:265px;" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'">
 
       </div>
+
       <div class="movie-info3">
             <?php
             $info_sql = "SELECT m.originalTitle, m.openDt, g.genreName, c.countryName from movie_metadata as m inner join genre as g on m.genreId = g.genreId inner join country as c on m.countryId = c.countryId where movieId = '".$_SESSION['movieId']."'";
@@ -71,14 +73,19 @@ include('dbconn.php');
           <table class="movie-info4">
             <?php
             if($company_row[0]==NULL){
-              $company_row[0] = 'Non';
+              $company = 'Non';
+            } else {
+              $company = $company_row[0];
             }
-            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>", $company_row[0],"</TD></TR>"
+            echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>", $company,"</TD></TR>"
             ?>
           </table>
+
+
         </div>
+        
+
       </div>
-    </div>
 
     <div class="movie-info2"><!--movie infromation plot, director, actors-->
       <p style="font-size: 25px; font-weight: bold;">Movie Plot</p>
@@ -88,6 +95,35 @@ include('dbconn.php');
       $plot_row = mysqli_fetch_row($plot_resource);
       echo "<font-size: 15px>",$plot_row[0],"</font>";
       ?>
+          <div> <!--배우 배역 나열 표-->
+            <table style="text-align: center; padding-top: 10px"> 
+              <?php
+                $char_sql = "SELECT a.actorName from actor as a
+                  inner join characters as c on a.actorId = c.actorId
+                  where movieId = $movie order by c.characterOrder LIMIT 5;";
+                $char_resource = mysqli_query($connect, $char_sql);
+              ?>
+              <tr>
+                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Actor</th>
+                <?php
+                  while ($char_row = mysqli_fetch_row($char_resource)){
+                ?>
+                  <td style="width: 130px; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+
+                <?php
+                  $char_sql = "SELECT c.characterName from actor as a
+                    inner join characters as c on a.actorId = c.actorId
+                    where movieId = $movie order by c.characterOrder LIMIT 5;";
+                  $char_resource = mysqli_query($connect, $char_sql);
+                ?>
+              <tr>
+                <th scope ="row" style="width: 80px; border: 1px solid #444444;">Character</th>
+                <?php
+                  while ($char_row = mysqli_fetch_row($char_resource)){
+                ?>
+                  <td style="width: 130px ; border: 1px solid #444444;"><?php echo $char_row[0]?></td><?php } ?>
+              </table>
+            </div>
     </div>
 
     <div class="comment-recent"><!--movie comments (3) recent-->
@@ -107,7 +143,7 @@ include('dbconn.php');
             <?php }?>
         </div>
       <div class="recent"> <!--recent comment-->
-        <div class="array" style="overflow: hidden; height:auto;">
+        <div class="array"  style="overflow: hidden; height:auto;">
           <table>
             <thead>
               <tr>
@@ -118,7 +154,7 @@ include('dbconn.php');
             </thead>
             <tbody>
               <?php
-                $movie = $_SESSION['movieId'];
+                
                 $recent_sql = "SELECT reviewTime, rating, comments from review where movieId = '$movie' ORDER BY reviewTime desc LIMIT 3;";
                 $recent_resource = mysqli_query($connect, $recent_sql);
                 while ($recent_row = mysqli_fetch_row($recent_resource)){
