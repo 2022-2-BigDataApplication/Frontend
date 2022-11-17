@@ -286,16 +286,17 @@ $view= $_POST['view'];
 
                 
                 $poster = "http://image.tmdb.org/t/p/w185/$row[1]";
-                $_Session['pathKey'] = $row[1];
+                $title5 = $row[0];
                 
                 if ($count%4==0){
                     echo "<tr>";
                 }
                 ?> 
-
-                
-                <td><a href="movieSession.php"><img src=<?=$poster?> onerror = "this.style.display = 'none';"/></a></td>
-                
+                <td><img src=<?=$poster?> style="width:185px; height:265px;" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'"/>
+                    <form action="movieSession.php" method="POST">
+                    <input type="submit" name="pathKey" value ="<?=$title5 ?>" align = "middle" style="height:50px; width:185px;">
+                    </form>
+                </td>
                 <?php
                 if ($count%4==3){
                     echo "</tr>";
