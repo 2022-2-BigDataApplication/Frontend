@@ -126,6 +126,8 @@ $view= $_POST['view'];
             /* 장르전체 */
             if($genre[0]=='21') {
                 /*성인*/
+                echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre[0], for $age, in order of $view</p>";
+
                 if($age=='all') {
                     /*최신순*/
                     if($view=='0') {
@@ -188,7 +190,14 @@ $view= $_POST['view'];
             else {
 
                 for ($i=0;$i<count($genre);$i++){
-                    echo "<p align = \"center\">movieId = $genre[$i]</p>";
+                    /*
+                    $start_year= $_POST['start_year'];
+                    $end_year= $_POST['end_year'];
+                    $genre= $_POST['genre']; 
+                    $age= $_POST['age'];
+                    $view= $_POST['view'];
+                    */
+                    echo "<p align = \"center\">show movies $start_year ~ $end_year genre id = $genre[$i], for $age, in order of $view</p>";
                 
                 /*성인*/
                 if($age=='all') {
@@ -206,7 +215,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId in $genre)
+                        and (genreId = $genre[$i])
                     
                         GROUP BY m.movieId
                         
@@ -219,7 +228,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId in $genre)
+                        and (genreId = $genre[$i])
                         
                         GROUP BY m.movieId
                         
@@ -232,7 +241,7 @@ $view= $_POST['view'];
                     if($view=='0') {
                         $sql = "SELECT originalTitle, posterPath FROM movie_metadata
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
-                        and (genreId in ($genre))
+                        and (genreId = $genre[$i])
                         and adult=0
                         order by openDt desc;";
                     } 
@@ -243,7 +252,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId in $genre)
+                        and (genreId = $genre[$i])
                         and adult=0
                         GROUP BY m.movieId
                         
@@ -256,7 +265,7 @@ $view= $_POST['view'];
                         
                         where DATE_FORMAT(openDt, '%Y') between CAST($start_year AS CHAR(4)) and CAST($end_year AS CHAR(4))
                         
-                        and (genreId in $genre)
+                        and (genreId = $genre[$i])
                         and adult=0
                         GROUP BY m.movieId
                         
