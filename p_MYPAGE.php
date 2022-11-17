@@ -53,7 +53,7 @@
     
     <div class="reviews">
         <h3><?php echo $user_name ?>'s reviews</h3>
-        <div class="array">
+        <div class="array"  style="overflow: hidden; height:auto;">
           <table>
             <thead>
               <tr>

@@ -107,7 +107,7 @@ include('dbconn.php');
             <?php }?>
         </div>
       <div class="recent"> <!--recent comment-->
-        <div class="array">
+        <div class="array" style="overflow: hidden; height:auto;">
           <table>
             <thead>
               <tr>
