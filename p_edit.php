@@ -1,5 +1,6 @@
 dd<?php
   include('dbconn.php');
+  include 'log_check.php;
 
   $userId = $_SESSION['userId'];
   $user_sql = "SELECT * FROM users WHERE userID = '$userId'";
