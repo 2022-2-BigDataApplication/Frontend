@@ -138,9 +138,11 @@ include ('log_check.php');
         <div>
                 <p align = "center">Director</p>
                 <table><?php 
-                    $sql3 = "SELECT posterPath from movie_metadata
-                    where directorId in (select directorId from director where directorName LIKE '$search_key') AND length(posterPath) > 0;";
-                    
+                    //$sql3 = "SELECT posterPath from movie_metadata
+                    //where directorId in (select directorId from director where directorName LIKE '$search_key') AND length(posterPath) > 0;";
+                    $sql3= "select m.originalTitle, m.posterPath from movie_metadata m
+                            inner join director d on d.directorId = m.directorId
+                            where d.directorName LIKE '%$search_key%' AND length(posterPath) > 0;";
                 ?>
             
             <?php
