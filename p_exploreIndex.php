@@ -115,4 +115,5 @@ include('dbconn.php');
         </form>
     </div>
 </body>
+<?php mysqli_close($connect); ?>
 </html>

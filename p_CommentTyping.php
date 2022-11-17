@@ -116,6 +116,12 @@ include('dbconn.php');
     </div>
 
   </main>
-  <?php mysqli_close($con); ?>
+  <?php 
+  mysqli_free_result($data_resource);
+  mysqli_free_result($test_resource);
+  mysqli_free_result($info_resource);
+  mysqli_free_result($company_resource);
+  mysqli_free_result($plot_resource);
+  mysqli_close($connect); ?>
 </body>
 </html>

@@ -46,5 +46,6 @@ include ('log_check.php');
         </form>
     </div>
     </div>
-    <hr>        
+    <hr>  
+    <?php mysqli_close($connect); ?>      
 </body>
