@@ -40,9 +40,7 @@ $movie = $_SESSION['movieId'];
         $test_row = mysqli_fetch_row($test_resource);
         ?>
         <img src= "http://image.tmdb.org/t/p/w185<?=$data_row[0]?>" style="width:185px; height:265px;" onerror = "this.src='NoImage.png'; this.style='width:185px; height:265px;'">
-
       </div>
-
       <div class="movie-info3">
             <?php
             $info_sql = "SELECT m.originalTitle, m.openDt, g.genreName, c.countryName from movie_metadata as m inner join genre as g on m.genreId = g.genreId inner join country as c on m.countryId = c.countryId where movieId = '".$_SESSION['movieId']."'";
@@ -80,13 +78,10 @@ $movie = $_SESSION['movieId'];
             echo "<TR><TD>", $info_row[1],"</TD><TD>",$info_row[2],"</TD><TD>",$info_row[3],"</TD><TD>", $company,"</TD></TR>"
             ?>
           </table>
-
-
         </div>
-        
-
       </div>
-
+    </div>
+    
     <div class="movie-info2"><!--movie infromation plot, director, actors-->
       <article style = "border: 1px #a39485 solid;
   box-shadow: 0 2px 5px rgba(0,0,0,.25);

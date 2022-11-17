@@ -17,36 +17,34 @@
       <table>
       <form action="join.php" method = "POST">
         <tr>
-          <td>ID</td>
+          <th>ID</th>
           <td><input type="text" name="userId" placeholder="ID" required></td>
         </tr>
 
-        <tr><td></td><td></td><td></td></tr>
+        <tr><th></th><td></td><td></td></tr>
 
         <tr>
-          <td>Password</td>
+          <th>Password</th>
           <td><input type="text" name="pwd" placeholder="password" required></td>
           <td></td>
         </tr>
 
         <tr>
-          <td>Check PW</td>
+          <th>Check PW</th>
           <td><input type="text" name="pwd_confirm" placeholder="check password" required></td>
           <td></td>
         </tr>
 
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
+        <tr><th></th><td></td><td></td></tr>
 
         <tr>
-          <td>NickName</td>
+          <th>NickName</th>
           <td><input type="text" name="userName" placeholder="nickname" required></td>
           <td></td>
         </tr>
 
         <tr>
-          <td>Introduction</td>
+          <th>Introduction</th>
           <td><input  type="text" name="userIntro" placeholder="no more than 300byte" required></td>
           <td></td>
         </tr>

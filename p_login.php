@@ -18,14 +18,12 @@
       <form action="login.php" method = "POST">
       <table>
         <tr>
-          <td>ID</td>
+          <th>ID</th>
           <td><input type="text" name="ID" placeholder="typing your own ID"></td>
         </tr>
 
-        <tr><td></td><td></td><td></td></tr>
-
         <tr>
-          <td>Password</td>
+          <th>Password</th>
           <td><input type="text" name="PW" placeholder="password"></td>
           <td></td>
         </tr>
